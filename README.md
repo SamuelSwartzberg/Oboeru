@@ -1,7 +1,3 @@
-# What is this?
-
-A card model for Anki, containing some HTML and a fuckton of CSS and JS (for Anki standards), to enable you to create most kind of flashcards
-
 # Getting Started
 
 Download the .js/.css files and place them in your collection.media folder (or set that up as a repo, but bear in mind anki does not accept subfolders in collection.media). Import the note type.
@@ -187,7 +183,7 @@ Don't let this perfunctory and somewhat harsh README fool you: I do love y'all! 
 # Acknowledgments
 
 Glutanimate is simply the best thing that could have happened to Anki <3
-Calculator taken from:
+Calculator adapted from: https://codepen.io/carbonhoarder/pen/zrJZPK by Carbonhoarder
 SVG color droplet: color by shashank singh from the Noun Project
 Math.js: https://mathjs.org/
 Whoever on StackOverflow (or Github, I can't recall) figured out that there are different methods needed to save things on Android vs. Desktop, and what those are.
