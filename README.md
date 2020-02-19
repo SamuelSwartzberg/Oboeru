@@ -12,7 +12,7 @@ Whenever I write "add anything", I personally just usually add "y", but you are 
 # Fields
 
 ## A_1, A_2, ..., B_3
-A_1, A_2, A_3 are just three fields for A content. There are multiple reasons why you would want to separate this into different fields, as should become apparent. The relevant B fields function anologously.
+A_1, A_2, A_3 are just three fields for A content. There are multiple reasons why you would want to separate this into different fields, as should become apparent. The relevant B fields function analogously.
 
 ## *_Typable
 These are somewhat counterintuitive, but consistent. These will display as regular A/B fields on their respective front, but will create a Type: type field if they are on the back. If you experiment, you'll get the hang of it.
@@ -21,7 +21,7 @@ These are somewhat counterintuitive, but consistent. These will display as regul
 Same as the numbered A and B fields, but since these are always qualified in some way (Front, Back, FrontBack), these are not numbered
 
 ## *_Image
-Takes any number of <img> elements and tries to display them prettily. Within reason, it will preserve the original image if only one is given, if more are given, it will flexbox them.
+Takes any number of `<img>` elements and tries to display them prettily. Within reason, it will preserve the original image if only one is given, if more are given, it will flexbox them.
 
 ## *_Front
 Only displays on the front of cards. If combined with A or B, only displays on that respective front side.
@@ -44,7 +44,7 @@ So, all the main fields (So A/B_1-3, _Main, Typable) are flexboxed. If you set t
 
 ## Format_ContentBox
 
-Will surround all the main fields that have content (So A/B_1-3, _Main, Typable) with a nice pretty box, and is necessary for some of the features. Add <div>s for each line if you want multiline boxes. To enable, enter "contentBox" (without quotemarks).
+Will surround all the main fields that have content (So A/B_1-3, _Main, Typable) with a nice pretty box, and is necessary for some of the features. Add `<div>`s for each line if you want multiline boxes. To enable, enter "contentBox" (without quotemarks).
 
 ## AddReverse
 
@@ -72,7 +72,7 @@ Add an image as a BG to the sketchpad, to draw over it. Generally, I would recom
 Add anything to randomize the field order of the main elements (So A/B_1-3, _Main, Typable). Usefull for multiple-choice, as will be explained in the Features section.
 
 ## ReorderText
-Add reorderText to have all <i> s be randomly shuffled, and become clickable to reorder them. In effect, you can make flashcards that are based on putting elements in a correct order, similar to Duolingo's word order tasks. Be sure to add all the text into one of the main fields (Ideally a FrontBack one, so you don't have to do it twice), and be sure to only use one main field, otherwise things will not work as intended.
+Add reorderText to have all `<i>` s be randomly shuffled, and become clickable to reorder them. In effect, you can make flashcards that are based on putting elements in a correct order, similar to Duolingo's word order tasks. Be sure to add all the text into one of the main fields (Ideally a FrontBack one, so you don't have to do it twice), and be sure to only use one main field, otherwise things will not work as intended.
 
 # Features
 
@@ -91,16 +91,16 @@ See ReorderText
 ## Card Colors
 
 Cards can change color based on tag. Just add a line like this to the CSS file: "[data-tag*="$YOUR_TAG_OR_PART_OF_TAG_HERE"]~* { --dark-color: $R,$G,$B;}", with $R, $G, $B Being the desired color values.
-Be sure to check for uniqueness, [data-tag*="ja"] will match "japanese" but also "favorite-places-in-jakarta" or "ways-to-spell-adjacent" or "jazzdance".
+Be sure to check for uniqueness, `[data-tag*="ja"] will match "japanese" but also "favorite-places-in-jakarta" or "ways-to-spell-adjacent" or "jazzdance".
 
 ## Faux clozes
-Ever not want to switch to cloze note type, or wanted to use the handy calculator (see above) in your clozes? Never fear, any element surrounded by <u> tags will render as a cloze on the front, and as bold on the back. Combine with FrontBack for profit!
+Ever not want to switch to cloze note type, or wanted to use the handy calculator (see above) in your clozes? Never fear, any element surrounded by `<u>` tags will render as a cloze on the front, and as bold on the back. Combine with FrontBack for profit!
 
 ## Highlighiting
-<span class="highlightMain"> makes that text stand out like it's nobodies buisness.
+`<span class="highlightMain">` makes that text stand out like it's nobodies buisness.
 
 ## Keys
-<div class="key"><span>$YOUR_KEY_HERE</span></div> makes a nice-looking oversized keyboard key. Perfect for learning how to comment out code in your favorite IDE, only to realize that they assume you have a / button, but you're using a German keyboard.
+`<div class="key"><span>$YOUR_KEY_HERE</span></div>` makes a nice-looking oversized keyboard key. Perfect for learning how to comment out code in your favorite IDE, only to realize that they assume you have a / button, but you're using a German keyboard.
 
 ## IPA
 If you give something the .ipa class, it will be surrounded by square brackets and have a somewhat more congenial line-height.
@@ -114,9 +114,9 @@ The fonts specified in the .css file, to be found for free at Google Fonts.
 
 # Considerations & Warnings
 
-## If something looks broken, chances are Anki inserted a <div>
+## If something looks broken, chances are Anki inserted a `<div>`
 
-Anki loves to insert <div>s, <br>s, nbsps and other fun stuff that completely breaks the CSS. Be warned.
+Anki loves to insert `<div>`s, `<br>`s, nbsps and other fun stuff that completely breaks the CSS. Be warned.
 
 ## Italics are turning into boxes and other such issues
 
