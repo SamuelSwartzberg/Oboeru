@@ -3,5 +3,5 @@
 !*.js
 !*.css
 !*.html
-!_README.md
+!README.md
 !.gitignore
