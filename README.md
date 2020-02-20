@@ -27,7 +27,7 @@ Whenever I write "add anything", I personally just usually add "y", but you are 
 ## A_1, A_2, ..., B_3
 
 A_1, A_2, A_3 are just three fields for A content. There are multiple reasons why you would want to separate this into different fields, as should become apparent. The relevant B fields function analogously.
-<
+
 ## *_Typable
 
 These are somewhat counterintuitive, but consistent. These will display as regular A/B fields on their respective front, but will create a Type: type field if they are on the back. If you experiment, you'll get the hang of it.
@@ -142,7 +142,7 @@ If you give something the .ipa class, it will be surrounded by square brackets a
 
 ## code
 
-´<code>´ tags should make your code look a little better, although I'm still not a huge fan right now.
+`<code>` tags should make your code look a little better, although I'm still not a huge fan right now.
 
 # Requirements
 
