@@ -4,30 +4,30 @@ Download the .js/.css files and place them in your collection.media folder (or s
 
 # Concepts
 
-Every note creates one or two cards, no more (currently). Each card, in my terminology, has a front and a back, the front being the part of the card you see before you flip it, and the back being the part of the card that becomes visible once you flip it. (Please note that under this definition, the front is also visible once you flip it. In Anki's terms, {\{FrontSide}} is included on the backside.)
+Every note creates one or two cards, no more (currently). Each card, in my terminology, has a front and a back, the front being the part of the card you see before you flip it, and the back being the part of the card that becomes visible once you flip it. (Please note that under this definition, the front is also visible once you flip it. In Anki's terms, {\{FrontSide}} is included on the backside.">
 A Fields appear on the front of the first card, and on the back of the second card, should it be enabled. The reverse is true for B fields.
 Flipping the card is what you do when you press the "Check Answer" button.
 Whenever I write "add anything", I personally just usually add "y", but you are free to copy-paste the complete works of Shakespeare instead.
 
 # Demo Images
 
-![Normal demo images](_demo_images/_demo_image2.png)
-![Normal demo images](_demo_images/_demo_image4.png)
-![Normal demo images](_demo_images/_demo_image10.png)
-![Normal demo images](_demo_images/_demo_image1.png)
-![Reordering demo images](_demo_images/_demo_image5.png)
-![Reordering demo images](_demo_images/_demo_image7.png)
-![Reordering demo images](_demo_images/_demo_image6.png)
-![Mult-choice demo images](_demo_images/_demo_image3.png)
-![Mult-choice demo images](_demo_images/_demo_image8.png)
-![Mult-choice demo images](_demo_images/_demo_image9.png)
+<img src"_demo_images/_demo_image2.png" height="500px">
+<img src"_demo_images/_demo_image4.png" height="500px">
+<img src"_demo_images/_demo_image10.png"height="500px">
+<img src"_demo_images/_demo_image1.png" height="500px">
+<img src"_demo_images/_demo_image5.png"height="500px">
+<img src"_demo_images/_demo_image7.png"height="100px">
+<img src"_demo_images/_demo_image6.png" height="100px">
+<img src"_demo_images/_demo_image3.png"height="500px">
+<img src"_demo_images/_demo_image8.png"height="200px">
+<img src"_demo_images/_demo_image9.png"height="200px">
 
 # Fields
 
 ## A_1, A_2, ..., B_3
 
 A_1, A_2, A_3 are just three fields for A content. There are multiple reasons why you would want to separate this into different fields, as should become apparent. The relevant B fields function analogously.
-
+<
 ## *_Typable
 
 These are somewhat counterintuitive, but consistent. These will display as regular A/B fields on their respective front, but will create a Type: type field if they are on the back. If you experiment, you'll get the hang of it.
@@ -58,7 +58,7 @@ Display on front and back, duh.
 
 ## *_FrontBack_Main_Begin/End
 
-Display before all the relevant Main fields (So A/B_1-3, _Main, Typable)
+Display before all the relevant Main fields (So A/B_1-3, _Main, Typable">
 
 ## Format_FlexDirection
 
@@ -142,7 +142,7 @@ If you give something the .ipa class, it will be surrounded by square brackets a
 
 ## code
 
-<code> tags should make your code look a little better, although I'm still not a huge fan right now.
+´<code>´ tags should make your code look a little better, although I'm still not a huge fan right now.
 
 # Requirements
 
@@ -197,4 +197,5 @@ Glutanimate is simply the best thing that could have happened to Anki <3
 Calculator adapted from: https://codepen.io/carbonhoarder/pen/zrJZPK by Carbonhoarder
 SVG color droplet: color by shashank singh from the Noun Project
 Math.js: https://mathjs.org/
+Highlight.js: https://highlightjs.org/
 Whoever on StackOverflow (or Github, I can't recall) figured out that there are different methods needed to save things on Android vs. Desktop, and what those are.
