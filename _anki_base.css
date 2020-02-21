@@ -109,6 +109,7 @@ body{
 /* Set the relevant fonts */
 .card { font-family: Rubik, KosugiMaru;}
 code { font-family: Inconsolata;}
+.ipa {font-family: DejaVuSans;}
 
 /* Set the font-sizes*/
 body {font-size: var(--large-distance);}
@@ -162,7 +163,7 @@ a, .highlightMain{border-radius: var(--tiny-distance); border-width: var(--borde
 code, textarea, pre{border-radius: var(--tiny-distance);}
 
 /*Specific styling classes*/
-.ipa{line-height: 100%; /*Make sure that large IPA symbols don't kill alignment*/} .ipa:before{ content: "["; } .ipa:after{ content: "]"; }
+.ipa{line-height: 100%;/*Make sure that large IPA symbols don't kill alignment*/} .ipa:before{ content: "["; } .ipa:after{ content: "]"; }
 .allCaps{ text-transform: uppercase; }
 .frontSide font{font-size: 0px;line-height: 0px;} /*fake clozes*/ .frontSide font::after{content: "[...]"; font-size: initial; font-weight: bold;}
 .backSide font{font-weight: bold}
@@ -238,3 +239,4 @@ a.replaybutton{position: absolute; top:var(--medium-distance); right:var(--mediu
 @font-face { font-family: 'Rubik'; font-style: normal; src: local('Rubik'); src: url('_Rubik-Regular.ttf') format('truetype');}
 @font-face {font-family: 'KosugiMaru'; font-style: normal; src: local('_KosugiMaru');src: url('_KosugiMaru-Regular.ttf') format('truetype');}
 @font-face {font-family: 'Inconsolata'; font-style: normal; src: local('_Inconsolata');src: url('_Inconsolata.ttf') format('truetype');}
+@font-face {font-family: '_DejaVuSans'; font-style: normal; src: local('_DejaVuSans');src: url('_DejaVuSans..ttf') format('truetype');}
