@@ -149,6 +149,10 @@ Because highlight.js detection is not always great for short snippets, the card 
 
 If a field contains `divs` with the japanese colon ：, it will format them more congenially. Very alpha feature.
 
+## NSFW
+
+If you know much about the science of learning, you'll know that the more extreme images, the stronger the memory. But it's a bit awkward to review anki cards on public transportation and have a nsfw image pop up. Just add the class .nsfw to your img's and watch it become auto-hidden and revealable in one tap.
+
 # Requirements
 
 The fonts specified in the .css file, to be found for free at Google Fonts.
