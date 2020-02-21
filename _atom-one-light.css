@@ -1,0 +1,92 @@
+/*
+
+Atom One Light by Daniel Gamage
+Original One Light Syntax theme from https://github.com/atom/one-light-syntax
+
+base:    #fafafa
+mono-1:  #383a42
+mono-2:  #686b77
+mono-3:  #a0a1a7
+hue-1:   #0184bb
+hue-2:   #4078f2
+hue-3:   #a626a4
+hue-4:   #50a14f
+hue-5:   #e45649
+hue-5-2: #c91243
+hue-6:   #986801
+hue-6-2: #c18401
+
+*/
+
+.frontSide .hljs {
+  color: #383a42;
+}
+
+.frontSide .hljs-comment,
+.frontSide .hljs-quote {
+  color: #a0a1a7;
+  font-style: italic;
+}
+
+.frontSide .hljs-doctag,
+.frontSide .hljs-keyword,
+.frontSide .hljs-formula {
+  color: #a626a4;
+}
+
+.frontSide .hljs-section,
+.frontSide .hljs-name,
+.frontSide .hljs-selector-tag,
+.frontSide .hljs-deletion,
+.frontSide .hljs-subst {
+  color: #e45649;
+}
+
+.frontSide .hljs-literal {
+  color: #0184bb;
+}
+
+.frontSide .hljs-string,
+.frontSide .hljs-regexp,
+.frontSide .hljs-addition,
+.frontSide .hljs-attribute,
+.frontSide .hljs-meta-string {
+  color: #50a14f;
+}
+
+.frontSide .hljs-built_in,
+.frontSide .hljs-class .frontSide .hljs-title {
+  color: #c18401;
+}
+
+.frontSide .hljs-attr,
+.frontSide .hljs-variable,
+.frontSide .hljs-template-variable,
+.frontSide .hljs-type,
+.frontSide .hljs-selector-class,
+.frontSide .hljs-selector-attr,
+.frontSide .hljs-selector-pseudo,
+.frontSide .hljs-number {
+  color: #986801;
+}
+
+.frontSide .hljs-symbol,
+.frontSide .hljs-bullet,
+.frontSide .hljs-link,
+.frontSide .hljs-meta,
+.frontSide .hljs-selector-id,
+.frontSide .hljs-title {
+  color: #4078f2;
+}
+
+.frontSide .hljs-emphasis {
+  font-style: italic;
+}
+
+.frontSide .hljs-strong {
+  font-weight: bold;
+}
+
+.frontSide .hljs-link {
+  text-decoration: underline;
+}
