@@ -126,7 +126,7 @@ Be sure to check for uniqueness, `[data-tag*="ja"] will match "japanese" but als
 
 ## Faux clozes
 
-Ever not want to switch to cloze note type, or wanted to use the handy calculator (see above) in your clozes? Never fear, any element surrounded by `<u>` tags will render as a cloze on the front, and as bold on the back. Combine with FrontBack for profit!
+Ever not want to switch to cloze note type, or wanted to use the handy calculator (see above) in your clozes? Never fear, any element surrounded by `<font>` tags will render as a cloze on the front, and as bold on the back. Combine with FrontBack for profit!
 
 ## Highlighiting
 
