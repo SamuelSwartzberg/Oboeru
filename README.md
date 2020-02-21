@@ -142,7 +142,8 @@ If you give something the .ipa class, it will be surrounded by square brackets a
 
 ## code
 
-`<code>` tags should make your code look a little better, although I'm still not a huge fan right now.
+`<code>` tags should make your code look a little better. `<pre><code>` also has syntax highlighting courtesy of highlight.js.
+Because highlight.js detection is not always great for short snippets, the card tries to detect what language the code is based on the tags. Specifically, it looks for "::$language_name" (hierarchical tags, see Glutanimates addon) and tries to match $language_name with an array of language names defined at the end of _highlight.pack.js.
 
 # Requirements
 

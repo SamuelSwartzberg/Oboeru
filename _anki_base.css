@@ -5,7 +5,7 @@ since #qa is broken on android, we need to refer to it with .question or .answer
 */
 /* Reset user agent or anki style rules*/
 div, img, textarea { padding: 0; margin: 0;}
-body, p, #content { margin: 0;}
+body, p, pre, #content { margin: 0;}
 img{ max-width: 100% !important; max-height: 100% !important;}
 em, i, u{ font-style: normal; text-decoration: none;}
 hr, div:empty, .colorJapanese~* br{ display: none;}
@@ -15,6 +15,7 @@ textarea{ font-family: inherit; resize: none; color: inherit; border-width: 0;}
 input{color:inherit;}
 .MJXc-display{margin: 0!important;} #MathJax-Element-4~br{display: none;}
 svg{display: block;}
+pre{font-family: inherit; white-space: pre-wrap;}
 
 /* Set the basic variables */
 body{
@@ -86,14 +87,14 @@ body{
  a.replaybutton {background-color: var(--dark-sheer-color-no-transparency);}
 .cardlet.backSide, .frontSide a:not(.replaybutton), .frontSide .highlightMain{ background-color: var(--dark-medium-bg-color);}
 .frontSide .contentBox, .frontSide #typeans, .scratchpad textarea, .frontSide .reorderText i{ background-color: var(--dark-fivepercent-color); }
-.backSide .contentBox, .frontSide code{ background-color: var(--black-fivepercent-color);}
+.backSide .contentBox, .frontSide :not(pre) > code{ background-color: var(--black-fivepercent-color);}
 #back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, .typeGood{background-color: var(--good-color);}
 #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){ background-color: var(--bad-color);}
 .typeBad{background-color: var(--bad-color);}
 .typeMissed{ background-color: var(--dark-fivepercent-color);}
 .backSide .highlightMain, .backSide a:not(.replaybutton){background-color: var(--light-deemphasize-color);}
 .backSide .key{background-color: var(--light-full-color);}
-.backSide code{background-color: var(--black-slight-color);}
+.backSide :not(pre) > code{background-color: var(--black-slight-color);}
 .frontSide .contentBox.selectedBox{ background-color: var(--selected-color);}
 
 /*border*/
@@ -123,7 +124,8 @@ code {font-size: var(--medium-distance)}
 #frontTags, code {text-align: left;}
 
 /*Set other font-related properties*/
-code{ padding-top: var(--tiny-distance); padding-bottom: var(--tiny-distance); line-height: var(--medium-distance);}
+code{ padding-top: var(--tiny-distance); padding-bottom
+    : var(--tiny-distance); line-height: var(--medium-distance);}
 .questionedElements{line-height: calc(1.33 * var(--large-distance));}
 
 /*Set the box models with width or height 100% and border-box*/
