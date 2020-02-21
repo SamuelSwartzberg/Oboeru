@@ -15,7 +15,7 @@ textarea{ font-family: inherit; resize: none; color: inherit; border-width: 0;}
 input{color:inherit;}
 .MJXc-display{margin: 0!important;} #MathJax-Element-4~br{display: none;}
 svg{display: block;}
-pre{font-family: inherit; white-space: pre-wrap;}
+pre{font-family: inherit; white-space: pre-wrap; line-height: 0; /*fix for css adding unwanted whitespace*/}
 
 /* Set the basic variables */
 body{
@@ -124,8 +124,7 @@ code {font-size: var(--medium-distance)}
 #frontTags, code {text-align: left;}
 
 /*Set other font-related properties*/
-code{ padding-top: var(--tiny-distance); padding-bottom
-    : var(--tiny-distance); line-height: var(--medium-distance);}
+code{ padding-top: var(--tiny-distance); padding-bottom: var(--tiny-distance); line-height: var(--medium-distance);}
 .questionedElements{line-height: calc(1.33 * var(--large-distance));}
 
 /*Set the box models with width or height 100% and border-box*/
@@ -139,6 +138,7 @@ code{ padding-top: var(--tiny-distance); padding-bottom
 .contentBox{ padding: var(--smallish-distance);}
 .key{--key-size: calc(6 * var(--basic-unit-of-distance)); display: inline-block; width: var(--key-size); height: var(--key-size); text-align: center; margin: auto var(--small-distance); line-height: var(--key-size);}
 .questionedElements > div > div { --margins-lr: var(--small-distance); margin-left: var(--margins-lr); margin-right: var(--margins-lr); }
+pre{overflow: hidden;} pre code{width: 100vw; padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); margin: 0;}
 
 /*Text: Set the padding, margins, etc. of things that appear within text content*/
 code, .highlightMain, a { display: inline-block; padding-left: var(--small-distance); padding-right: var(--small-distance); margin: 0 var(--tiny-distance);}
@@ -159,7 +159,7 @@ a, .highlightMain{border-radius: var(--tiny-distance); border-width: var(--borde
 /* things that have even borders */
 .contentBox, #typeans {border-radius: var(--small-distance); border-width: 0.2rem 0.2rem 0.2rem 0.2rem }
 /*other*/
-code, textarea{border-radius: var(--tiny-distance);}
+code, textarea, pre{border-radius: var(--tiny-distance);}
 
 /*Specific styling classes*/
 .ipa{line-height: 100%; /*Make sure that large IPA symbols don't kill alignment*/} .ipa:before{ content: "["; } .ipa:after{ content: "]"; }
