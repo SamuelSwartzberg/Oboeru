@@ -145,6 +145,10 @@ If you give something the .ipa class, it will be surrounded by square brackets a
 `<code>` tags should make your code look a little better. `<pre><code>` also has syntax highlighting courtesy of highlight.js.
 Because highlight.js detection is not always great for short snippets, the card tries to detect what language the code is based on the tags. Specifically, it looks for "::$language_name" (hierarchical tags, see Glutanimates addon) and tries to match $language_name with an array of language names defined at the end of _highlight.pack.js.
 
+## conversations
+
+If a field contains `divs` with the japanese colon ：, it will format them more congenially. Very alpha feature.
+
 # Requirements
 
 The fonts specified in the .css file, to be found for free at Google Fonts.

@@ -47,3 +47,11 @@ try {
 }
 massNotDisplay([".frontSide:not(#color-picker)", ".bodySection", ".questionedElements", ".questionedContentSection", ".extraInfoSection", ".headerSection", "#answer", ".inputSection"]);
 window.scroll(0,100000);
+
+document.querySelectorAll(".questionedElements > div > div > div").forEach(function(item, i){
+    if(item.innerHTML.includes("：")){
+        item.parentNode.style.textAlign="left";
+        stringBeforeColon = item.innerHTML.slice(0, item.innerHTML.indexOf("："));
+        stringAfterColon = item.innerHTML.slice(item.innerHTML.indexOf("：")+1);
+        item.innerHTML = "<b>" + stringBeforeColon + "</b>：" + stringAfterColon;
+     }})
