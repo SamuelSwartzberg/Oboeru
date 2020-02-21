@@ -107,7 +107,7 @@ body{
 .frontSide .contentBox.selectedBox{ border-color: var(--selected-dark-color);}
 
 /* Set the relevant fonts */
-.card { font-family: Rubik, KosugiMaru;}
+.card, code#typeans { font-family: Rubik, KosugiMaru;}
 code { font-family: Inconsolata;}
 .ipa {font-family: DejaVuSans;}
 
@@ -199,7 +199,7 @@ a.replaybutton{position: absolute; top:var(--medium-distance); right:var(--mediu
 .inputSection center{margin-bottom: 35vh;}
 #typeans { text-align: center; display: inline-block; padding: var(--medium-distance); max-width: fit-content; }
 #typeans br { display: block; }
-#typeans>span { padding: var(--small-distance); padding-top: 0.95rem; border-radius: var(--small-distance); margin: var(--tiny-distance); line-height: 3.5rem; }
+#typeans>span { padding: var(--small-distance); border-radius: var(--small-distance); margin: var(--tiny-distance); line-height: 3.5rem; }
 
 /*Styling rules for dynamically added elements only*/
 
