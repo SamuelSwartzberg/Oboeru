@@ -4,18 +4,38 @@ On desktop, #qa is a direct child of body, and on both platforms, #qa  contains 
 since #qa is broken on android, we need to refer to it with .question or .answer respectively
 */
 /* Reset user agent or anki style rules*/
-div, img, textarea { padding: 0; margin: 0;}
-body, p, pre, #content { margin: 0;}
-img{ max-width: 100% !important; max-height: 100% !important;}
-em, i, u, font{ font-style: normal; text-decoration: none;}
-hr, div:empty, .colorJapanese~* br{ display: none;}
-a, a.replaybutton{ text-decoration: none;}
-a.replaybutton{color: inherit;}
-textarea{ font-family: inherit; resize: none; color: inherit; border-width: 0;}
-input, font{color:inherit;}
-.MJXc-display{margin: 0!important;} #MathJax-Element-4~br{display: none;}
+
+hr, div:empty, br, #_flag, #_mark, #MathJax-Element-4~br{ display: none;}
+
 svg{display: block;}
-pre{font-family: inherit; white-space: pre-wrap; line-height: 0; /*fix for css adding unwanted whitespace*/}
+
+em, i, u, font, ins, s, strike, del, cite, var, address, dfn, tt, code, kbd, samp, a, a.replaybutton, pre, xmp, plaintext, listing{
+    font-style: unset; text-decoration: unset; font-family: unset;}
+big, small, h1, h2, h3, h4, h5, h6 {font-size: unset;} strong, b {font-weight: unset;}
+mark{color: unset; background-color: unset;}
+blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+
+/*Reset Anki-specific behaviors*/
+body{overflow-wrap: break-word;}
+img{ max-width: 100% !important; max-height: 100% !important;}
+.typeGood, .typeBad, .typeMissed{background-color: transparent;}
+.card, body.nightMode.card {background-color: white;}
+.MJXc-display{margin: 0!important;}
+
+div, img, textarea, body, p, pre, #content { padding: 0; margin: 0;}
+blockquote, abbr, acronym, address, big, cite, del, dfn, ins, section, summary,
+time, mark, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside{ margin: 0; padding: 0; border: 0;}
+
+textarea{ font-family: inherit; resize: none; color: inherit; border-width: 0;}
+
+pre{white-space: pre-wrap; line-height: 0; /*fix for css adding unwanted whitespace*/}
+ul, ol{margin-block-start: 0.5rem; margin-block-end: 0.5rem; list-style: inside; text-align: left; padding-inline-start: 1rem;}
+
+.background{ position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; z-Index: -1;} /*This used to be used as a background, but is now only used to make sure the correct color variables are used.*/
+
+/*Warning classes to show the user that there is unwanted HTML that breaks something*/
+.imageSection > div > div{ background-color: red !important; }
 
 /* Set the basic variables */
 body{
@@ -79,7 +99,7 @@ body{
 .cardlet.backSide, .frontSide a:not(.replaybutton), .frontSide {color: var(--light-full-color);}
 .frontSide .textDeemphasize{ color: var(--dark-deemphasize-color);}
 .backSide .textDeemphasize,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct .textDeemphasize, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct) .textDeemphasize{ color: var(--light-deemphasize-color);}
-.typeGood, .typeBad,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){color: var(--light-full-color);}
+body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){color: var(--light-full-color);}
 .replaybutton svg{ fill: var(--max-dark-color)!important;}
 #control-container svg { fill: var(--dark-fifteenpercent-color)!important;}
 #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){ color: var(--light-full-color);}
@@ -92,9 +112,9 @@ body{
 .cardlet.backSide, .frontSide a:not(.replaybutton), .frontSide .highlightMain{ background-color: var(--dark-medium-bg-color);}
 .frontSide .contentBox, .frontSide #typeans, .scratchpad textarea, .frontSide .reorderText i{ background-color: var(--dark-fivepercent-color); }
 .backSide .contentBox, .frontSide code{ background-color: var(--black-fivepercent-color);}
-#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, .typeGood{background-color: var(--good-color);}
+#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, body .typeGood{background-color: var(--good-color);}
 #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){ background-color: var(--bad-color);}
-.typeBad{background-color: var(--bad-color);}
+body .typeBad{background-color: var(--bad-color);}
 .typeMissed{ background-color: var(--dark-fivepercent-color);}
 .backSide .highlightMain, .backSide a:not(.replaybutton){background-color: var(--light-deemphasize-color);}
 .backSide .key{background-color: var(--light-full-color);}
@@ -122,7 +142,7 @@ pre code {font-size: var(--medium-distance)}
 
 /* Set the font weights*/
 #frontTags {font-weight: normal;}
-.headerSection, .cloze, .key {font-weight: bold;}
+b, .headerSection, .cloze, .key {font-weight: bold;}
 
 /*Set the text alignments, as long as they are not css hacks*/
 .card {text-align: center;}
@@ -174,8 +194,6 @@ code, textarea, pre{border-radius: var(--tiny-distance);}
 .frontSide font{font-size: 0px;line-height: 0px;} /*fake clozes*/ .frontSide font::after{content: "___"; font-size: initial; font-weight: bold;}
 .backSide font{font-weight: bold}
 
-/* The base/background. This is the class that every card in ankis terminology has */
-.card {background-color: white;} .background{ position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; z-Index: -1;}
 
 /* Layouting: Sizing and alignment for the regular elements*/
 body > #qa, #content > .question, #content > .answer{margin: 0 var(--small-distance) 0 var(--small-distance); display: flex; flex-direction: column; justify-content: flex-end; min-height: 100vh;}
