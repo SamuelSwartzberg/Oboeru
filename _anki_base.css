@@ -14,6 +14,7 @@ em, i, u, font, ins, s, strike, del, cite, var, address, dfn, tt, code, kbd, sam
 big, small, h1, h2, h3, h4, h5, h6 {font-size: unset;} strong, b {font-weight: unset;}
 mark{color: unset; background-color: unset;}
 blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+font {color:unset!important;}
 
 /*Reset Anki-specific behaviors*/
 body{overflow-wrap: break-word;}
@@ -105,6 +106,7 @@ body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div 
 #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){ color: var(--light-full-color);}
 .frontSide .contentBox.selectedBox{ color: var(--light-full-color);}
 .frontSide .contentBox.selectedBox .textDeemphasize{ color: var(--selected-deemphasize-color);}
+.questionedElements font{color: var(--selected-color)!important;}
 
 /*BG*/
 .cardlet.frontSide{ background-color: var(--dark-sheer-color);}
