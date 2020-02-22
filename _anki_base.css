@@ -1,7 +1,7 @@
 /*
 #content is the label applied to the child of body, but containing the div #qa on ankidroid
 On desktop, #qa is a direct child of body, and on both platforms, #qa  contains the actual html we wrote
-since #qa is broken on android, we need to refer to it with .question or .answer respectively
+since #qa is broken on android, we need to refer to it with .question or .answer respectively - not anymore
 */
 /* Reset user agent or anki style rules*/
 
@@ -69,6 +69,7 @@ body{
     --black-slight-color: rgba(0,0,0,0.15);
     --good-color: #11ce00;
     --bad-color: #f00;
+    --missed-color: #888;
     --selected-color: #1cb0f6;
     --selected-dark-color: #0788c5;
     --selected-deemphasize-color: #d1effd;
@@ -95,16 +96,15 @@ body{
 [data-tag*="code"]~*, [data-tag*="soft"]~*{ --dark-color: 9,10,13;}
 
 /*Text&co*/
-.cardlet.frontSide, .backSide .highlightMain, .frontSide .reorderText i{color: var(--max-dark-color);}
+.cardlet.frontSide, .backSide .highlightMain, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike{color: var(--max-dark-color);}
 .frontSide a:not(.replaybutton), .backSide .key{color: var(--dark-medium-bg-color);}
 .cardlet.backSide, .frontSide a:not(.replaybutton), .frontSide {color: var(--light-full-color);}
 .frontSide .textDeemphasize{ color: var(--dark-deemphasize-color);}
 .backSide .textDeemphasize,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct .textDeemphasize, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct) .textDeemphasize{ color: var(--light-deemphasize-color);}
-body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){color: var(--light-full-color);}
+body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), .frontSide .selectText .selected, #back-indicator-token~* .selectText u, #back-indicator-token~* .selectText strike.selected, .frontSide .contentBox.selectedBox{color: var(--light-full-color);}
 .replaybutton svg{ fill: var(--max-dark-color)!important;}
 #control-container svg { fill: var(--dark-fifteenpercent-color)!important;}
 #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){ color: var(--light-full-color);}
-.frontSide .contentBox.selectedBox{ color: var(--light-full-color);}
 .frontSide .contentBox.selectedBox .textDeemphasize{ color: var(--selected-deemphasize-color);}
 .questionedElements font{color: var(--selected-color)!important;}
 
@@ -112,25 +112,25 @@ body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div 
 .cardlet.frontSide{ background-color: var(--dark-sheer-color);}
  a.replaybutton {background-color: var(--dark-sheer-color-no-transparency);}
 .cardlet.backSide, .frontSide a:not(.replaybutton), .frontSide .highlightMain{ background-color: var(--dark-medium-bg-color);}
-.frontSide .contentBox, .frontSide #typeans, .scratchpad textarea, .frontSide .reorderText i{ background-color: var(--dark-fivepercent-color); }
+.frontSide .contentBox, .frontSide #typeans, .scratchpad textarea, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike{ background-color: var(--dark-fivepercent-color); }
 .backSide .contentBox, .frontSide code{ background-color: var(--black-fivepercent-color);}
-#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, body .typeGood{background-color: var(--good-color);}
-#back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){ background-color: var(--bad-color);}
-body .typeBad{background-color: var(--bad-color);}
+#back-indicator-token~* .selectText u{background-color: var(--missed-color)}
+#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, body .typeGood, #back-indicator-token~* .selectText u.selected{background-color: var(--good-color);}
+#back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), body .typeBad, #back-indicator-token~* .selectText strike.selected{ background-color: var(--bad-color);}
 .typeMissed{ background-color: var(--dark-fivepercent-color);}
 .backSide .highlightMain, .backSide a:not(.replaybutton){background-color: var(--light-deemphasize-color);}
 .backSide .key{background-color: var(--light-full-color);}
 .backSide :not(pre) > code{background-color: var(--black-slight-color);}
-.frontSide .contentBox.selectedBox{ background-color: var(--selected-color);}
+.frontSide .contentBox.selectedBox, .frontSide .selectText .selected{ background-color: var(--selected-color);}
 
 /*border*/
 .cardlet.frontSide, a.replaybutton{ border-color: var(--dark-fivepercent-color);}
-.imageSection img { border-color: var(--dark-tenpercent-color);}
+.imageSection img{ border-color: var(--dark-tenpercent-color);}
 .cardlet.backSide{ border-color: var(--black-slight-color);}
 .frontSide ~ .imageSection img, .backSide .highlightMain, .backSide a:not(.replaybutton), .backSide .key {border-color: var(--dark-fifteenpercent-color);}
-.frontSide .contentBox, .frontSide .reorderText i, .frontSide #typeans, .scratchpad textarea{ border-color: var(--dark-fivepercent-color);}
-.backSide .contentBox, .frontSide a:not(.replaybutton), .frontSide .highlightMain, #back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct,#back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){ border-color: var(--black-slight-color);}
-.frontSide .contentBox.selectedBox{ border-color: var(--selected-dark-color);}
+.frontSide .contentBox, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .frontSide #typeans, .scratchpad textarea{ border-color: var(--dark-fivepercent-color);}
+.backSide .contentBox, .frontSide a:not(.replaybutton), .frontSide .highlightMain, #back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct,#back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), #back-indicator-token~* .selectText u, #back-indicator-token~* .selectText strike.selected{ border-color: var(--black-slight-color);}
+.frontSide .contentBox.selectedBox, .frontSide .selectText .selected{ border-color: var(--selected-dark-color);}
 
 /* Set the relevant fonts */
 .card, code#typeans { font-family: Rubik, KosugiMaru;}
@@ -166,8 +166,8 @@ pre code{line-height: var(--medium-distance);}
 .key{--key-size: calc(6 * var(--basic-unit-of-distance)); display: inline-block; width: var(--key-size); height: var(--key-size); text-align: center; margin: auto var(--small-distance); line-height: var(--key-size);}
 .questionedElements > div > div { --margins-lr: var(--small-distance); margin-left: var(--margins-lr); margin-right: var(--margins-lr); }
 pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0;}
-.reorderText i{ padding: 0.25rem 0.5rem; margin-left: 0.25rem; margin-right: 0.25rem; }
-.reorderText > div > div:not(:empty){ display: flex; }
+.reorderText i, .frontSide .selectText u, .frontSide .selectText strike{ padding: var(--tiny-distance) var(--small-distance); margin:var(--tiny-distance); }
+.reorderText > div > div:not(:empty), .reorderText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty) { display: flex; flex-wrap: wrap; align-items: baseline;}
 
 /*Text: Set the padding, margins, etc. of things that appear within text content*/
 code, .highlightMain, a { display: inline-block; padding-left: var(--small-distance); padding-right: var(--small-distance); margin: 0 var(--tiny-distance);}
@@ -178,11 +178,11 @@ code, .highlightMain, a { display: inline-block; padding-left: var(--small-dista
 .contentBox > div{ margin-bottom: var(--small-distance); } .contentBox > div:last-child{ margin-bottom: 0; }
 
 /*things that have borders */
-.cardlet, .imageSection img, .key, a.replaybutton, .contentBox, a, .highlightMain, .reorderText i {border-style: solid;}
+.cardlet, .imageSection img, .key, a.replaybutton, .contentBox, a, .highlightMain, .reorderText i, .frontSide .selectText u, .frontSide .selectText strike {border-style: solid;}
 /* things that have big borders */
 .cardlet, .imageSection img{border-radius: var(--medium-distance); border-width: var(--border-width-large);}
 /* things that have medium borders */
-a.replaybutton, .key, .reorderText i {border-radius: var(--small-distance); border-width: var(--border-width-medium); }
+a.replaybutton, .key, .reorderText i, .frontSide .selectText u, .frontSide .selectText strike {border-radius: var(--small-distance); border-width: var(--border-width-medium); }
 /* things that have small borders */
 a, .highlightMain{border-radius: var(--tiny-distance); border-width: var(--border-width-medium);}
 /* things that have even borders */

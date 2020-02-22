@@ -21,17 +21,19 @@ function saveFrontToBack(name, value) {
         console.log(e + "Name or value was undefined or null.");
     }}
 
-function loadFromFront(name) {
+function loadFromFront(name, isArray, preserve) {
     try {
         checkParams(name);
         var tempSessionStorageItem;
         try{
             tempSessionStorageItem = sessionStorage.getItem(name);
-            sessionStorage.setItem(name,"");}
+            if (!preserve) { sessionStorage.setItem(name,""); }
+            }
         catch (e){
             try {
                 tempSessionStorageItem=window[name];
-                window[name]="";
+                if (!preserve) {window[name]="";}
+                if(typeof tempSessionStorageItem === "string" && isArray) {tempSessionStorageItem=tempSessionStorageItem.split(",")};
             } catch (err) {
                 console.log("When trying to load " + name + " a fatal error was encountered:\n" + err);
             }}
