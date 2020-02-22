@@ -54,13 +54,17 @@ body{
 }
 
 /*TEMP*/
-.reorderText i{
-    padding: 0.25rem 0.5rem;
-    margin-left: 0.25rem; margin-right: 0.25rem;
+
+.overlay-hide {
+    display: block!important;
+    width:100vw;
+    height:100vh;
+    position: absolute;
+    background-color:white;
+    animation: 0.1s hide forwards;
+    margin: 0 !important;
 }
-.reorderText > div > div:not(:empty){
-    display: flex;
-}
+@keyframes hide { from { visibility: visible; } to { visibility: hidden;} }
 
 /*Default*/
 .background~*{ --dark-color: 17,92,184;}
@@ -140,6 +144,8 @@ pre code{line-height: var(--medium-distance);}
 .key{--key-size: calc(6 * var(--basic-unit-of-distance)); display: inline-block; width: var(--key-size); height: var(--key-size); text-align: center; margin: auto var(--small-distance); line-height: var(--key-size);}
 .questionedElements > div > div { --margins-lr: var(--small-distance); margin-left: var(--margins-lr); margin-right: var(--margins-lr); }
 pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0;}
+.reorderText i{ padding: 0.25rem 0.5rem; margin-left: 0.25rem; margin-right: 0.25rem; }
+.reorderText > div > div:not(:empty){ display: flex; }
 
 /*Text: Set the padding, margins, etc. of things that appear within text content*/
 code, .highlightMain, a { display: inline-block; padding-left: var(--small-distance); padding-right: var(--small-distance); margin: 0 var(--tiny-distance);}
