@@ -60,9 +60,9 @@ Display on front and back, duh.
 
 Display before all the relevant Main fields (So A/B_1-3, _Main, Typable">
 
-## Format_FlexDirection
+## Format_Flex_Direction_Or_Wrap
 
-So, all the main fields (So A/B_1-3, _Main, Typable) are flexboxed. If you set this to "flexDirectionColumn", it will create a column, not a row.
+So, all the main fields (So A/B_1-3, _Main, Typable) are flexboxed. If you set this to "flexDirectionColumn", it will create a column, not a row. If you set this to "flexWrap", items will wrap nicely.
 
 ## Format_ContentBox
 
@@ -103,6 +103,10 @@ Add anything to randomize the field order of the main elements (So A/B_1-3, _Mai
 ## ReorderText
 
 Add reorderText to have all `<i>` s be randomly shuffled, and become clickable to reorder them. In effect, you can make flashcards that are based on putting elements in a correct order, similar to Duolingo's word order tasks. Be sure to add all the text into one of the main fields (Ideally a FrontBack one, so you don't have to do it twice), and be sure to only use one main field, otherwise things will not work as intended.
+
+## selectText
+
+Allows you to create boxes with `<strike>` and `<u>`. On the front, you can select which ones are correct, and once flipped, you will get feedback. Strike is defined as wrong, u as right. Combinable with reorderText.
 
 # Features
 
