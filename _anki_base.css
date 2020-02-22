@@ -82,7 +82,7 @@ body{
     height:100vh;
     position: absolute;
     background-color:white;
-    animation: 0.1s hide forwards;
+    animation: 0.8s hide forwards;
     margin: 0 !important;
 }
 @keyframes hide { from { visibility: visible; } to { visibility: hidden;} }
@@ -205,7 +205,7 @@ a.replaybutton{position: absolute; top:var(--medium-distance); right:var(--mediu
 .imageSection {margin: 0 0 0 calc(-1 * var(--small-distance))!important; width: calc(100% + 2 * var(--small-distance))}
 .imageSection > div{display: flex; flex-wrap: wrap; align-items: baseline; }
 .imageSection img {flex-basis: 45%; min-width:45%; flex-shrink: 1; flex-grow: 1; object-fit: cover; box-sizing: border-box; margin: var(--small-distance); line-height:0px; max-height: 65vh!important;}
-.imageSection img:only-of-type{ flex-basis: 95%; min-width: 95%;}
+.imageSection img:only-of-type, img.fullsize-image{ flex-basis: 95%; min-width: 95%;}
 
 .cardlet { width: 100%; margin: var(--medium-distance) 0; overflow: hidden; box-sizing: border-box;}
 

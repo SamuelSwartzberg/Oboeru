@@ -153,6 +153,10 @@ If a field contains `divs` with the japanese colon ：, it will format them more
 
 If you know much about the science of learning, you'll know that the more extreme images, the stronger the memory. But it's a bit awkward to review anki cards on public transportation and have a nsfw image pop up. Just add the class .nsfw to your img's and watch it become auto-hidden and revealable in one tap.
 
+## Fullsize-image
+
+By default, a single image in the image section will display in its native proportions, at least up to a reasonable size. If you have more than one image, it will tile them at 2 per line. If you have multiple images that you need to display uncut (diagrams etc.), add the class fullsize-image to them
+
 # Requirements
 
 The fonts specified in the .css file, to be found for free at Google Fonts.
