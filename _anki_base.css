@@ -196,7 +196,7 @@ a.replaybutton{position: absolute; top:var(--medium-distance); right:var(--mediu
 #frontTags{padding-top: var(--small-distance);padding-bottom: var(--medium-distance);} #frontTags:only-of-type { padding-top: var(--medium-distance); }
 .extraInfoSection:only-child {padding: var(--medium-distance) 0;}
 .questionedElements{ display:flex; justify-content: center; padding: var(--medium-distance) 0; }
-/*optional class*/.flexDirectionColumn{flex-direction: column;}
+/*optional class*/.flexDirectionColumn{flex-direction: column;}.flexWrap{flex-wrap: wrap;}
 .questionedElements > div { min-width: 0; flex-shrink: 1; }
 .inputSection {margin: var(--small-distance) 0;}
 .frontSide .contentBox{ width: 100vw; box-sizing: border-box; max-width: calc(100% - 2 * var(--margins-lr)); height: 100%; }
