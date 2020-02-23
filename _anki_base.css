@@ -96,7 +96,7 @@ body{
 [data-tag*="code"]~*, [data-tag*="soft"]~*{ --dark-color: 9,10,13;}
 
 /*Text&co*/
-.cardlet.frontSide, .backSide .highlightMain, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike{color: var(--max-dark-color);}
+.cardlet.frontSide, .frontSide .highlightMain, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike{color: var(--max-dark-color);}
 .frontSide a:not(.replaybutton), .backSide .key{color: var(--dark-medium-bg-color);}
 .cardlet.backSide, .frontSide a:not(.replaybutton), .frontSide {color: var(--light-full-color);}
 .frontSide .textDeemphasize{ color: var(--dark-deemphasize-color);}
@@ -111,14 +111,14 @@ body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div 
 /*BG*/
 .cardlet.frontSide{ background-color: var(--dark-sheer-color);}
  a.replaybutton {background-color: var(--dark-sheer-color-no-transparency);}
-.cardlet.backSide, .frontSide a:not(.replaybutton), .frontSide .highlightMain{ background-color: var(--dark-medium-bg-color);}
-.frontSide .contentBox, .frontSide #typeans, .scratchpad textarea, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike{ background-color: var(--dark-fivepercent-color); }
-.backSide .contentBox, .frontSide code{ background-color: var(--black-fivepercent-color);}
+.cardlet.backSide, .frontSide a:not(.replaybutton){ background-color: var(--dark-medium-bg-color);}
+.frontSide .contentBox, .frontSide #typeans, .scratchpad textarea, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .frontSide .highlightMain{ background-color: var(--dark-fivepercent-color); }
+.backSide .contentBox, .frontSide code, .backSide .highlightMain{ background-color: var(--black-fivepercent-color);}
 #back-indicator-token~* .selectText u{background-color: var(--missed-color)}
 #back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, body .typeGood, #back-indicator-token~* .selectText u.selected{background-color: var(--good-color);}
 #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), body .typeBad, #back-indicator-token~* .selectText strike.selected{ background-color: var(--bad-color);}
 .typeMissed{ background-color: var(--dark-fivepercent-color);}
-.backSide .highlightMain, .backSide a:not(.replaybutton){background-color: var(--light-deemphasize-color);}
+.backSide a:not(.replaybutton){background-color: var(--light-deemphasize-color);}
 .backSide .key{background-color: var(--light-full-color);}
 .backSide :not(pre) > code{background-color: var(--black-slight-color);}
 .frontSide .contentBox.selectedBox, .frontSide .selectText .selected{ background-color: var(--selected-color);}
@@ -127,9 +127,9 @@ body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div 
 .cardlet.frontSide, a.replaybutton{ border-color: var(--dark-fivepercent-color);}
 .imageSection img{ border-color: var(--dark-tenpercent-color);}
 .cardlet.backSide{ border-color: var(--black-slight-color);}
-.frontSide ~ .imageSection img, .backSide .highlightMain, .backSide a:not(.replaybutton), .backSide .key {border-color: var(--dark-fifteenpercent-color);}
-.frontSide .contentBox, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .frontSide #typeans, .scratchpad textarea{ border-color: var(--dark-fivepercent-color);}
-.backSide .contentBox, .frontSide a:not(.replaybutton), .frontSide .highlightMain, #back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct,#back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), #back-indicator-token~* .selectText u, #back-indicator-token~* .selectText strike.selected{ border-color: var(--black-slight-color);}
+.frontSide ~ .imageSection img, .backSide a:not(.replaybutton), .backSide .key {border-color: var(--dark-fifteenpercent-color);}
+.frontSide .contentBox, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .frontSide #typeans, .frontSide .highlightMain, .scratchpad textarea{ border-color: var(--dark-fivepercent-color);}
+.backSide .contentBox, .frontSide a:not(.replaybutton), #back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct,#back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), #back-indicator-token~* .selectText u, #back-indicator-token~* .selectText strike.selected, .backSide .highlightMain{ border-color: var(--black-slight-color);}
 .frontSide .contentBox.selectedBox, .frontSide .selectText .selected{ border-color: var(--selected-dark-color);}
 
 /* Set the relevant fonts */
@@ -159,7 +159,7 @@ pre code{line-height: var(--medium-distance);}
 
 /*Set specific word-break behaviors*/
 .contentBox{word-break: break-all; }
-.reorderText i, .frontSide .selectText u, .frontSide .selectText strike{word-break: keep-all;}
+.reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .highlightMain{word-break: keep-all;}
 
 /*Flow: Set the padding, margins, etc. of things that dynamically appear*/
 .imageSection img { margin: var(--small-distance)}
@@ -167,12 +167,10 @@ pre code{line-height: var(--medium-distance);}
 .key{--key-size: calc(6 * var(--basic-unit-of-distance)); display: inline-block; width: var(--key-size); height: var(--key-size); text-align: center; margin: auto var(--small-distance); line-height: var(--key-size);}
 .questionedElements > div > div { --margins-lr: var(--small-distance); margin-left: var(--margins-lr); margin-right: var(--margins-lr); }
 pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0;}
-.reorderText i, .frontSide .selectText u, .frontSide .selectText strike{padding: var(--tiny-distance) var(--small-distance); margin:var(--tiny-distance); }
+.reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .highlightMain{padding: var(--tiny-distance) var(--small-distance); margin:var(--tiny-distance); }
 .reorderText > div > div:not(:empty), .reorderText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty) { display: flex; flex-wrap: wrap; align-items: baseline;}
-.reorderText i, .frontSide .selectText u, .frontSide .selectText strike{display: inline-block;}
-
-/*Text: Set the padding, margins, etc. of things that appear within text content*/
-code, .highlightMain, a { display: inline-block; padding-left: var(--small-distance); padding-right: var(--small-distance); margin: 0 var(--tiny-distance);}
+.reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .highlightMain{display: inline-block;}
+code, a { display: inline-block; padding-left: var(--small-distance); padding-right: var(--small-distance); margin: 0 var(--tiny-distance);}
 
 /*Children: Set the padding, margins of things that only ever occur within containers*/
 .replaybutton svg{margin: var(--smallish-distance);}
@@ -184,9 +182,9 @@ code, .highlightMain, a { display: inline-block; padding-left: var(--small-dista
 /* things that have big borders */
 .cardlet, .imageSection img{border-radius: var(--medium-distance); border-width: var(--border-width-large);}
 /* things that have medium borders */
-a.replaybutton, .key, .reorderText i, .frontSide .selectText u, .frontSide .selectText strike {border-radius: var(--small-distance); border-width: var(--border-width-medium); }
+a.replaybutton, .key, .reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .highlightMain{border-radius: var(--small-distance); border-width: var(--border-width-medium); }
 /* things that have small borders */
-a, .highlightMain{border-radius: var(--tiny-distance); border-width: var(--border-width-medium);}
+a{border-radius: var(--tiny-distance); border-width: var(--border-width-medium);}
 /* things that have even borders */
 .contentBox, #typeans {border-radius: var(--small-distance); border-width: 0.2rem 0.2rem 0.2rem 0.2rem }
 /*other*/
@@ -217,6 +215,7 @@ a.replaybutton{position: absolute; top:var(--medium-distance); right:var(--mediu
 .questionedContentSection>:not(:only-child){padding-bottom: var(--medium-distance);}
 #frontTags{padding-top: var(--small-distance);padding-bottom: var(--medium-distance);} #frontTags:only-of-type { padding-top: var(--medium-distance); }
 .extraInfoSection:only-child {padding: var(--medium-distance) 0;}
+.extraInfoSection > div {margin-bottom: var(--small-distance);}.extraInfoSection > div:only-of-type {margin-bottom: 0;}
 .questionedElements{ display:flex; justify-content: center; padding: var(--medium-distance) 0; }
 /*optional class*/.flexDirectionColumn{flex-direction: column;}.flexWrap{flex-wrap: wrap;}
 .questionedElements > div { min-width: 0; flex-shrink: 1; }
@@ -262,6 +261,9 @@ a.replaybutton{position: absolute; top:var(--medium-distance); right:var(--mediu
 .inv {display: none;}
 .lighter {background-color: var(--light-deemphasize-color);font-size: 1.2rem;}
 .operands, .enter {background-color: var(--dark-fifteenpercent-color); font-size: 1.6rem;}
+
+/* Personal collection-specific color manipulation*/
+.extraInfoSection img[src*=".png"] { filter: invert(100%) brightness(1.5); height: var(--largeish-distance); opacity: 0.7; vertical-align: text-top; display: inline;}
 
 /* Font-Faces */
 @font-face { font-family: 'Rubik'; font-style: normal; src: local('Rubik'); src: url('_Rubik-Regular.ttf') format('truetype');}
