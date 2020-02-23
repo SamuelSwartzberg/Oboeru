@@ -27,6 +27,7 @@ function loadFromFront(name, isArray, preserve) {
         var tempSessionStorageItem;
         try{
             tempSessionStorageItem = sessionStorage.getItem(name);
+            if(typeof tempSessionStorageItem === "string" && isArray) {tempSessionStorageItem=tempSessionStorageItem.split(",")};
             if (!preserve) { sessionStorage.setItem(name,""); }
             }
         catch (e){

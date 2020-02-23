@@ -159,6 +159,7 @@ pre code{line-height: var(--medium-distance);}
 
 /*Set specific word-break behaviors*/
 .contentBox{word-break: break-all; }
+.reorderText i, .frontSide .selectText u, .frontSide .selectText strike{word-break: keep-all;}
 
 /*Flow: Set the padding, margins, etc. of things that dynamically appear*/
 .imageSection img { margin: var(--small-distance)}
@@ -166,8 +167,9 @@ pre code{line-height: var(--medium-distance);}
 .key{--key-size: calc(6 * var(--basic-unit-of-distance)); display: inline-block; width: var(--key-size); height: var(--key-size); text-align: center; margin: auto var(--small-distance); line-height: var(--key-size);}
 .questionedElements > div > div { --margins-lr: var(--small-distance); margin-left: var(--margins-lr); margin-right: var(--margins-lr); }
 pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0;}
-.reorderText i, .frontSide .selectText u, .frontSide .selectText strike{ padding: var(--tiny-distance) var(--small-distance); margin:var(--tiny-distance); }
+.reorderText i, .frontSide .selectText u, .frontSide .selectText strike{padding: var(--tiny-distance) var(--small-distance); margin:var(--tiny-distance); }
 .reorderText > div > div:not(:empty), .reorderText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty) { display: flex; flex-wrap: wrap; align-items: baseline;}
+.reorderText i, .frontSide .selectText u, .frontSide .selectText strike{display: inline-block;}
 
 /*Text: Set the padding, margins, etc. of things that appear within text content*/
 code, .highlightMain, a { display: inline-block; padding-left: var(--small-distance); padding-right: var(--small-distance); margin: 0 var(--tiny-distance);}
