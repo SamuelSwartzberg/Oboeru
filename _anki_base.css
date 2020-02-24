@@ -79,16 +79,7 @@ body{
 
 /*TEMP*/
 
-.overlay-hide {
-    display: block!important;
-    width:calc( 100vw - var(--medium-distance) );
-    height:100vh;
-    position: absolute;
-    background-color:white;
-    animation: 0.8s hide forwards;
-    margin: 0 !important;
-}
-@keyframes hide { from { visibility: visible; } to { visibility: hidden;} }
+#octo-motivate{    display: none; top: var(--medium-distance); position: fixed;}
 .replaybutton{background-color: var(--selected-color);
     border-color: var(--selected-dark-color);
     width: 3.5rem;

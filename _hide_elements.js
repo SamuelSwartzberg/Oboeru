@@ -52,7 +52,7 @@ try {
 } catch (e) {
     console.log(e);
 }
-massNotDisplay([".frontSide:not(#color-picker)", ".bodySection", ".questionedElements", ".questionedContentSection", ".extraInfoSection", ".headerSection", "#answer", ".inputSection"]);
+massNotDisplay([".frontSide:not(#color-picker)", ".bodySection", ".questionedElements", ".questionedContentSection", ".extraInfoSection", ".extraInfoSection > div", ".headerSection", "#answer", ".inputSection"]);
 window.scroll(0,100000);
 
 document.querySelectorAll(".questionedElements > div > div > div").forEach(function(item, i){
@@ -62,3 +62,18 @@ document.querySelectorAll(".questionedElements > div > div > div").forEach(funct
         stringAfterColon = item.innerHTML.slice(item.innerHTML.indexOf("：")+1);
         item.innerHTML = "<b>" + stringBeforeColon + "</b>：" + stringAfterColon;
      }})
+
+ if(!isFront()){
+     var cardCounter = Number(loadFromFront("card-counter", false, true)) || 0;
+     if(cardCounter>50 /*Since the script loads twice on each card actually 25*/){
+         octoMotivate = document.querySelector("#octo-motivate");
+         octoMotivate.style.display = "block";
+         octoMotivate.onclick = function (e) {
+             e.target.style.display = "none";
+         }
+         saveFrontToBack("card-counter", 0)
+     }else{
+         console.log(cardCounter);
+         saveFrontToBack("card-counter", cardCounter+1);
+     }
+ }
