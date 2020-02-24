@@ -7,14 +7,13 @@ since #qa is broken on android, we need to refer to it with .question or .answer
 
 hr, div:empty, br, #_flag, #_mark, #MathJax-Element-4~br{ display: none;}
 
-svg{display: block;}
+svg{display: block !important;}
 
 em, i, u, font, ins, s, strike, del, cite, var, address, dfn, tt, code, kbd, samp, a, a.replaybutton, pre, xmp, plaintext, listing{
     font-style: unset; text-decoration: unset; font-family: unset;}
 big, small, h1, h2, h3, h4, h5, h6 {font-size: unset;} strong, b {font-weight: unset;}
 mark{color: unset; background-color: unset;}
-blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
-font {color:unset!important;}
+blockquote, q { quotes: none; } blockquote::before, blockquote::after, q::before, q::after { content: ''; content: none; }
 
 /*Reset Anki-specific behaviors*/
 body{overflow-wrap: break-word;}
@@ -22,6 +21,8 @@ img{ max-width: 100% !important; max-height: 100% !important;}
 .typeGood, .typeBad, .typeMissed{background-color: transparent;}
 .card, body.nightMode.card {background-color: white;}
 .MJXc-display{margin: 0!important;}
+font {color:unset!important;}
+.replaybutton span{display: initial; vertical-align: initial; padding: 0;}
 
 div, img, textarea, body, p, pre, #content { padding: 0; margin: 0;}
 blockquote, abbr, acronym, address, big, cite, del, dfn, ins, section, summary,
@@ -87,6 +88,15 @@ body{
     margin: 0 !important;
 }
 @keyframes hide { from { visibility: visible; } to { visibility: hidden;} }
+.replaybutton{background-color: var(--selected-color);
+    border-color: var(--selected-dark-color);
+    width: 3.5rem;
+    padding: 0;
+    height: 3.5rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;}
 
 /*Default*/
 .background~*{ --dark-color: 17,92,184;}
@@ -102,14 +112,12 @@ body{
 .frontSide .textDeemphasize{ color: var(--dark-deemphasize-color);}
 .backSide .textDeemphasize,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct .textDeemphasize, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct) .textDeemphasize{ color: var(--light-deemphasize-color);}
 body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), .frontSide .selectText .selected, #back-indicator-token~* .selectText u, #back-indicator-token~* .selectText strike.selected, .frontSide .contentBox.selectedBox{color: var(--light-full-color);}
-.replaybutton svg{ fill: var(--max-dark-color)!important;}
 #control-container svg { fill: var(--dark-fifteenpercent-color)!important;}
 #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){ color: var(--light-full-color);}
 .frontSide .contentBox.selectedBox .textDeemphasize{ color: var(--selected-deemphasize-color);}
 
 /*BG*/
 .cardlet.frontSide{ background-color: var(--dark-sheer-color);}
- a.replaybutton {background-color: var(--dark-sheer-color-no-transparency);}
 .cardlet.backSide, .frontSide a:not(.replaybutton){ background-color: var(--dark-medium-bg-color);}
 .frontSide .contentBox, .frontSide #typeans, .scratchpad textarea, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .frontSide .highlightMain{ background-color: var(--dark-fivepercent-color); }
 .backSide .contentBox, .frontSide code, .backSide .highlightMain{ background-color: var(--black-fivepercent-color);}
@@ -123,7 +131,7 @@ body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div 
 .frontSide .contentBox.selectedBox, .frontSide .selectText .selected{ background-color: var(--selected-color);}
 
 /*border*/
-.cardlet.frontSide, a.replaybutton{ border-color: var(--dark-fivepercent-color);}
+.cardlet.frontSide{ border-color: var(--dark-fivepercent-color);}
 .imageSection img{ border-color: var(--dark-tenpercent-color);}
 .cardlet.backSide{ border-color: var(--black-slight-color);}
 .frontSide ~ .imageSection img, .backSide a:not(.replaybutton), .backSide .key {border-color: var(--dark-fifteenpercent-color);}
@@ -172,7 +180,6 @@ pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(
 code, a { display: inline-block; padding-left: var(--small-distance); padding-right: var(--small-distance); margin: 0 var(--tiny-distance);}
 
 /*Children: Set the padding, margins of things that only ever occur within containers*/
-.replaybutton svg{margin: var(--smallish-distance);}
 .key span{ display: inline-block; vertical-align: middle; line-height: normal; }
 .contentBox > div{ margin-bottom: var(--small-distance); } .contentBox > div:last-child{ margin-bottom: 0; }
 
@@ -198,7 +205,8 @@ font{font-size: 0px;line-height: 0px;} /*fake clozes*/ font::after{content: "___
 /* Layouting: Sizing and alignment for the regular elements*/
 body > #qa, #content > .question, #content > .answer{margin: 0 var(--small-distance) 0 var(--small-distance); display: flex; flex-direction: column; justify-content: flex-end; min-height: 100vh;}
 body > #qa > div, #content > .question > div, #content > .answer > div {margin-top: var(--small-distance); margin-bottom: var(--small-distance);}
-a.replaybutton{position: absolute; top:var(--medium-distance); right:var(--medium-distance);}
+
+.media-container{position: fixed; display: flex; flex-flow: row-reverse wrap; top:var(--medium-distance); right:var(--medium-distance);}
 
 .imageSection {margin: 0 0 0 calc(-1 * var(--small-distance))!important; width: calc(100% + 2 * var(--small-distance))}
 .imageSection > div{display: flex; flex-wrap: wrap; align-items: baseline; }
@@ -267,4 +275,4 @@ a.replaybutton{position: absolute; top:var(--medium-distance); right:var(--mediu
 @font-face { font-family: 'Rubik'; font-style: normal; src: local('Rubik'); src: url('_Rubik-Regular.ttf') format('truetype');}
 @font-face {font-family: 'KosugiMaru'; font-style: normal; src: local('_KosugiMaru');src: url('_KosugiMaru-Regular.ttf') format('truetype');}
 @font-face {font-family: 'Inconsolata'; font-style: normal; src: local('_Inconsolata');src: url('_Inconsolata.ttf') format('truetype');}
-@font-face {font-family: '_DejaVuSans'; font-style: normal; src: local('_DejaVuSans');src: url('_DejaVuSans..ttf') format('truetype');}
+@font-face {font-family: 'DejaVuSans'; font-style: normal; src: local('_DejaVuSans');src: url('_DejaVuSans.ttf') format('truetype');}
