@@ -55,8 +55,9 @@ body{
 /*Color styling*/
 .background~*{
     --main-light-color: 255,255,255;
-    --dark-sheer-color:  rgba(var(--dark-color),0.02);
+    --dark-sheer-color:  rgba(var(--dark-color),0.01);
     --dark-sheer-color-no-transparency: rgb(254,250,250);
+    --dark-threepercent-color:  rgba(var(--dark-color),0.03);
     --max-dark-color: rgb(var(--dark-color));
     --dark-deemphasize-color: rgba(var(--dark-color),0.55);
     --dark-fivepercent-color: rgba(var(--dark-color),0.05);
@@ -71,8 +72,8 @@ body{
     --good-color: #11ce00;
     --bad-color: #f00;
     --missed-color: #888;
-    --selected-color: #1cb0f6;
-    --selected-dark-color: #0788c5;
+    --selected-color: #1cc2f6;
+    --selected-dark-color: #08a0cf;
     --selected-deemphasize-color: #d1effd;
 }
 
@@ -118,8 +119,9 @@ body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div 
 
 /*BG*/
 .cardlet.frontSide{ background-color: var(--dark-sheer-color);}
+.frontSide .contentBox{ background-color: var(--dark-threepercent-color);}
 .cardlet.backSide, .frontSide a:not(.replaybutton){ background-color: var(--dark-medium-bg-color);}
-.frontSide .contentBox, .frontSide #typeans, .scratchpad textarea, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .frontSide .highlightMain{ background-color: var(--dark-fivepercent-color); }
+.frontSide #typeans, .scratchpad textarea, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .frontSide .highlightMain{ background-color: var(--dark-fivepercent-color); }
 .backSide .contentBox, .frontSide code, .backSide .highlightMain{ background-color: var(--black-fivepercent-color);}
 #back-indicator-token~* .selectText u{background-color: var(--missed-color)}
 #back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, body .typeGood, #back-indicator-token~* .selectText u.selected{background-color: var(--good-color);}
@@ -186,13 +188,13 @@ code, a { display: inline-block; padding-left: var(--small-distance); padding-ri
 /*things that have borders */
 .cardlet, .imageSection img, .key, a.replaybutton, .contentBox, a, .highlightMain, .reorderText i, .frontSide .selectText u, .frontSide .selectText strike {border-style: solid;}
 /* things that have big borders */
-.cardlet, .imageSection img{border-radius: var(--medium-distance); border-width: var(--border-width-large);}
+.cardlet, .imageSection img, .contentBox{border-radius: var(--medium-distance); border-width: var(--border-width-large);}
 /* things that have medium borders */
 a.replaybutton, .key, .reorderText i, .frontSide .selectText u, .frontSide .selectText strike, .highlightMain{border-radius: var(--small-distance); border-width: var(--border-width-medium); }
 /* things that have small borders */
 a{border-radius: var(--tiny-distance); border-width: var(--border-width-medium);}
 /* things that have even borders */
-.contentBox, #typeans {border-radius: var(--small-distance); border-width: 0.2rem 0.2rem 0.2rem 0.2rem }
+#typeans {border-radius: var(--small-distance); border-width: 0.2rem 0.2rem 0.2rem 0.2rem }
 /*other*/
 code, textarea, pre{border-radius: var(--tiny-distance);}
 
