@@ -88,7 +88,9 @@ body{
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    align-items: center;}
+    align-items: center;
+    z-index: 10;
+    }
 
 /*Default*/
 .background~*{ --dark-color: 17,92,184;}
