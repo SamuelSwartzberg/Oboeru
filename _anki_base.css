@@ -54,9 +54,10 @@ body{
 
 /*Color styling*/
 .background~*{
+    --dark-color: var(--red-dark-color), var(--green-dark-color), var(--blue-dark-color);
     --main-light-color: 255,255,255;
     --dark-sheer-color:  rgba(var(--dark-color),0.01);
-    --dark-sheer-color-no-transparency: rgb(254,250,250);
+    --dark-sheer-color-no-transparency: rgb(calc(var(--red-dark-color) + (255 - var(--red-dark-color)) * 0.9), calc(var(--green-dark-color) + (255 - var(--green-dark-color)) * 0.9), calc(var(--blue-dark-color) + (255 - var(--blue-dark-color)) * 0.9));
     --dark-threepercent-color:  rgba(var(--dark-color),0.03);
     --max-dark-color: rgb(var(--dark-color));
     --dark-deemphasize-color: rgba(var(--dark-color),0.55);
@@ -93,11 +94,11 @@ body{
     }
 
 /*Default*/
-.background~*{ --dark-color: 17,92,184;}
-[data-tag*="ja"]~* { --dark-color: 200,0,0;}
-[data-tag*="es"]~* { --dark-color: 140,106,154;}
-[data-tag*="phil"]~* { --dark-color: 0,108,15;}
-[data-tag*="code"]~*, [data-tag*="soft"]~*{ --dark-color: 9,10,13;}
+.background~*{--red-dark-color: 17; --green-dark-color: 92; --blue-dark-color: 184;}
+[data-tag*="::ja::"]~*, [data-tag$="::ja"]~*{ --red-dark-color: 200; --green-dark-color: 0; --blue-dark-color: 0;}
+[data-tag*="::es::"]~*, [data-tag$="::es"]~*{--red-dark-color: 140; --green-dark-color: 106; --blue-dark-color: 154;}
+[data-tag*="::phil::"]~*, [data-tag$="::phil"]~*{--red-dark-color: 0; --green-dark-color: 108; --blue-dark-color: 15;}
+[data-tag*="::code::"]~*, [data-tag*="::soft::"]~*, [data-tag$="::code"]~*, [data-tag$="::soft"]~*{--red-dark-color: 9; --green-dark-color: 10; --blue-dark-color: 13;}
 
 /*Text&co*/
 .cardlet.frontSide, .frontSide .highlightMain, .frontSide .reorderText i, .frontSide .selectText u, .frontSide .selectText strike{color: var(--max-dark-color);}
@@ -106,7 +107,7 @@ body{
 .frontSide .textDeemphasize{ color: var(--dark-deemphasize-color);}
 .backSide .textDeemphasize,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct .textDeemphasize, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct) .textDeemphasize{ color: var(--light-deemphasize-color);}
 body .typeGood, body .typeBad,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), .frontSide .selectText .selected, #back-indicator-token~* .selectText u, #back-indicator-token~* .selectText strike.selected, .frontSide .contentBox.selectedBox{color: var(--light-full-color);}
-#control-container svg { fill: var(--dark-fifteenpercent-color)!important;}
+#control-container svg { fill: var(--dark-sheer-color-no-transparency)!important;}
 #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct){ color: var(--light-full-color);}
 .frontSide .contentBox.selectedBox .textDeemphasize{ color: var(--selected-deemphasize-color);}
 
