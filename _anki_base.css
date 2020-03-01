@@ -117,7 +117,7 @@ body{
 .selectText u,
 .selectText strike,
 #typeans,
-:not(pre) code,
+:not(pre) > code,
 .highlightMain,
 .replaybutton,
 a,
@@ -132,11 +132,10 @@ a,
     margin: 0.2rem var(--tiny-distance);
     word-break: keep-all;
     line-height: 1.2em;
-    max-height: 1.2em;
 }
 
 /*Divergent sizes*/
-.replaybutton, .key{ width: var(--square-size); height: var(--square-size); max-height: none;}
+.replaybutton, .key{ width: var(--square-size); height: var(--square-size); }
 
 /*Non-box rectangles*/
 .scratchpad textarea,
