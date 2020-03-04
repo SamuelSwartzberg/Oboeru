@@ -21,7 +21,7 @@ img{ max-width: 100% !important; max-height: 100% !important;}
 .typeGood, .typeBad, .typeMissed{background-color: transparent;}
 .card, body.nightMode.card {background-color: white;}
 .MJXc-display{margin: 0!important;}
-font {color:unset!important;}
+body font {color:unset;}
 .replaybutton span{display: initial; vertical-align: initial; padding: 0;}
 #typeans{font-family: inherit !important;}
 
@@ -53,15 +53,18 @@ body{
     --large-distance: calc(var(--basic-unit-of-distance) * 3);
     --square-size: 3rem;
     --square-tappable-distance: 2.5rem;
-    font-size: var(--large-distance);
+    --font-size-retrievable: var(--large-distance);
+    font-size: var(--font-size-retrievable);
     text-align: center;
     font-family: Rubik, KosugiMaru;}
 
     code {font-family: Inconsolata;}
-    .ipa{ font-family: DejaVuSans;}
+    .ipa, .greek{font-family: DejaVuSans;}
 
 .background~*{
     --dark-color: var(--red-dark-color), var(--green-dark-color), var(--blue-dark-color);
+    --dark-darkened-fifty-color: calc(var(--red-dark-color) - (var(--red-dark-color) * 0.5)), calc(var(--green-dark-color) - (var(--green-dark-color) * 0.5)), calc(var(--blue-dark-color) - (var(--blue-dark-color) * 0.5));
+    --dark-darkened-fifty-seventypercent-color: rgba(var(--dark-darkened-fifty-color),0.6);
     --white-color: 255,255,255;
     --dark-sheer-color: rgba(var(--dark-color),0.02);
     --dark-full-color: rgb(var(--dark-color));
@@ -120,6 +123,7 @@ body{
 :not(pre) > code,
 .highlightMain,
 .replaybutton,
+font,
 a,
 .key{
     background-color: var(--box-bg-color);
@@ -129,7 +133,7 @@ a,
     border-width: var(--border-width-medium);
     display: inline-block;
     padding: 0.3rem var(--small-distance);
-    margin: 0.2rem var(--tiny-distance);
+    margin: 0.2rem var(--small-distance);
     word-break: keep-all;
     line-height: 1.2em;
 }
@@ -172,8 +176,8 @@ a:not(.replaybutton), .key  {background-color: var(--box-inverted-bg-color); col
 }
 
 /*Utility: font elements*/
-b, .headerSection, .cloze, .key, font {font-weight: bold;}
-.extraInfoSection, #frontTags {font-size: var(--largeish-distance);}
+b, .headerSection, .cloze, .key {font-weight: bold;}
+.extraInfoSection, #frontTags {font-size: var(--font-size-retrievable); --font-size-retrievable: var(--largeish-distance);}
 
 /* Layouting: Sizing and alignment for the regular elements*/
 body > #qa, #content > .question, #content > .answer{margin: 0 var(--small-distance) 0 var(--small-distance); display: flex; flex-direction: column; justify-content: flex-end; min-height: 100vh;}
@@ -182,8 +186,7 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 .media-container{position: fixed; display: flex; flex-flow: row-reverse wrap; top:var(--medium-distance); right:var(--medium-distance);}
 
 .imageSection {margin: 0 0 0 calc(-1 * var(--small-distance))!important; width: calc(100% + 2 * var(--small-distance))}
-.imageSection > div, .imageSection { width: 100%; height: 100%; box-sizing: border-box;}
-.imageSection > div{display: flex; flex-wrap: wrap; align-items: baseline; }
+.imageSection > div{ width: 100%; height: 100%; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: baseline; }
 .imageSection img {flex-basis: 45%; min-width:45%; flex-shrink: 1; flex-grow: 1; object-fit: cover; box-sizing: border-box; margin: var(--small-distance);  line-height:0px; max-height: 65vh!important;}
 .imageSection img:only-of-type, img.fullsize-image{ flex-basis: 95%; min-width: 95%;}
 
@@ -205,7 +208,7 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 
 /*Components*/
 
-pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem);font-size: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left;}
+pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem);font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left;}
 .ipa{ line-height: 100%; /*Make sure that large IPA symbols don't kill alignment*/} .ipa:before{ content: "["; } .ipa:after{ content: "]"; }
 
 .frontSide .contentBox{ width: 100vw; box-sizing: border-box; max-width: calc(100% - 2 * var(--margins-lr)); height: 100%; }
@@ -217,8 +220,9 @@ pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(
 #typeans br { display: block; }
 #typeans>span { padding: var(--small-distance); border-radius: var(--small-distance); margin: var(--tiny-distance); line-height: 3.5rem; }
 
-font{font-size: 0px;line-height: 0px;} /*fake clozes*/ font::after{content: "___"; font-size: initial;}
-#back-indicator-token~* font {font-size: inherit;line-height: inherit;} #back-indicator-token~* font::after{content: normal;}
+font{font-size: 0px;line-height: 0px; border: none; background-color: var(--dark-fifteenpercent-color); color: rgb(var(--dark-darkened-fifty-color)) !important;} /*fake clozes*/ font::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
+pre font{display: inline; background-color: none; color: inherit; border: none; border-radius: none; padding: 0; margin: 0; line-height: 1em;}
+#back-indicator-token~* font {font-size: var(--font-size-retrievable);line-height: inherit;} #back-indicator-token~* font::after{content: normal;}
 
 .reorderText > div > div:not(:empty), .reorderText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty) { display: flex; flex-wrap: wrap; align-items: baseline;}
 

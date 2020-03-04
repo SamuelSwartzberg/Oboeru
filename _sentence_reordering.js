@@ -74,7 +74,7 @@ else{
             }}
         var parentDivs = item.querySelectorAll("div");
         parentDivs.forEach((parentDiv) => {
-            var nonReorderOrderArr = loadFromFront("nonReorderArr");
+            var nonReorderOrderArr = loadFromFront("nonReorderArr", true);
             console.log(nonReorderOrderArr);
             var childCounter=0;
             for (var i = 0; i < parentDiv.children.length; i++) {

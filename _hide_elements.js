@@ -52,6 +52,38 @@ try {
 } catch (e) {
     console.log(e);
 }
+
+//for anything that is a box, delete leading and trailing spaces, if two boxes meet, merge their margins
+var boxSelectorString = ".contentBox, .reorderText i, #back-indicator-token~* i, .selectText u, .selectText strike, #typeans, :not(pre) > code, .highlightMain, .replaybutton, font, a, .key";
+document.querySelectorAll(boxSelectorString).forEach((item, i) => {
+    if (item.previousSibling && item.previousSibling.nodeName==="#text"){
+        var sliceindex = item.previousSibling.textContent.length-1;
+        while (item.previousSibling.textContent[sliceindex]===" ") {
+            sliceindex--;
+        }
+        item.previousSibling.textContent=item.previousSibling.textContent.slice(0,sliceindex+1);
+    }
+    if (item.nextSibling && item.nextSibling.nodeName==="#text"){
+        var sliceindex = 0;
+        while (item.nextSibling.textContent[sliceindex]===" ") {
+            sliceindex++;
+        }
+        item.nextSibling.textContent=item.nextSibling.textContent.slice(sliceindex);
+    }
+    if (!item.dataset.modified && item.nextSibling && item.nextSibling.matches && item.nextSibling.matches(boxSelectorString)){
+        item.style.marginRight = (parseFloat(window.getComputedStyle(item).marginRight)/2)+"px";
+        item.nextSibling.style.marginLeft = (parseFloat(window.getComputedStyle(item.nextSibling).marginLeft)/2)+"px";
+        item.dataset.modified = true;
+    }
+});
+
+document.querySelectorAll(boxSelectorString+", .ipa").forEach((item, i) => {
+    var prevInnerHtml = item.innerHTML;
+    item.innerHTML = item.innerHTML.trim();
+    if (prevInnerHtml !== item.innerHTML){console.log("trimmed: [" + prevInnerHtml + "] -> [" +item.innerHTML + "]");}
+});
+
+
 massNotDisplay([".frontSide:not(#color-picker)", ".bodySection", ".questionedElements", ".questionedContentSection", ".extraInfoSection", ".extraInfoSection > div", ".headerSection", "#answer", ".inputSection"]);
 window.scroll(0,100000);
 
