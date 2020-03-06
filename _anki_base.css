@@ -87,7 +87,7 @@ body{
 [data-tag*="::ja::"]~*, [data-tag$="::ja"]~*{ --red-dark-color: 200; --green-dark-color: 0; --blue-dark-color: 0;}
 [data-tag*="::es::"]~*, [data-tag$="::es"]~*{--red-dark-color: 140; --green-dark-color: 106; --blue-dark-color: 154;}
 [data-tag*="::phil::"]~*, [data-tag$="::phil"]~*{--red-dark-color: 0; --green-dark-color: 108; --blue-dark-color: 15;}
-[data-tag*="::code::"]~*, [data-tag*="::soft::"]~*, [data-tag$="::code"]~*, [data-tag$="::soft"]~*{--red-dark-color: 9; --green-dark-color: 10; --blue-dark-color: 13;}
+[data-tag*="::code::"]~*, [data-tag*="::softw::"]~*, [data-tag$="::code"]~*, [data-tag$="::softw"]~*{--red-dark-color: 9; --green-dark-color: 10; --blue-dark-color: 13;}
 
 .cardlet.frontSide{
     color: var(--dark-full-color);
@@ -132,8 +132,14 @@ a,
     border-radius: var(--small-distance);
     border-width: var(--border-width-medium);
     display: inline-block;
-    padding: 0.3rem var(--small-distance);
-    margin: 0.2rem var(--small-distance);
+    --box-margin-scaling-factor: 1;
+    --box-margin-horizontal: calc(var(--box-margin-scaling-factor) * var(--small-distance));
+    --box-margin-vertical: calc(var(--box-margin-scaling-factor) * 0.6 * var(--small-distance));
+    --box-padding-scaling-factor: 1;
+    --box-padding-horizontal: calc(var(--box-padding-scaling-factor) * var(--small-distance));
+    --box-padding-vertical: calc(var(--box-padding-scaling-factor) * 0.5 * var(--small-distance));
+    padding: var(--box-padding-vertical) var(--box-padding-horizontal);
+    margin: var(--box-margin-vertical) var(--box-margin-horizontal);
     word-break: keep-all;
     line-height: 1.2em;
 }
@@ -211,6 +217,8 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem);font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left;}
 .ipa{ line-height: 100%; /*Make sure that large IPA symbols don't kill alignment*/} .ipa:before{ content: "["; } .ipa:after{ content: "]"; }
 
+:not(pre) > code{--box-padding-scaling-factor: 0.8; --font-size-retrievable: 1.1em; font-size: var(--font-size-retrievable);}
+
 .frontSide .contentBox{ width: 100vw; box-sizing: border-box; max-width: calc(100% - 2 * var(--margins-lr)); height: 100%; }
 .contentBox{ padding: var(--smallish-distance);　display: block; word-break: break-all;}
 .contentBox > div{ margin-bottom: var(--small-distance); } .contentBox > div:last-child{ margin-bottom: 0; }
@@ -221,7 +229,7 @@ pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(
 #typeans>span { padding: var(--small-distance); border-radius: var(--small-distance); margin: var(--tiny-distance); line-height: 3.5rem; }
 
 font{font-size: 0px;line-height: 0px; border: none; background-color: var(--dark-fifteenpercent-color); color: rgb(var(--dark-darkened-fifty-color)) !important;} /*fake clozes*/ font::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
-pre font{display: inline; background-color: none; color: inherit; border: none; border-radius: none; padding: 0; margin: 0; line-height: 1em;}
+pre font{display: inline; background-color: transparent; color: inherit !important; border: none; border-radius: 0; padding: 0; margin: 0;} pre font::after{content: "___";}
 #back-indicator-token~* font {font-size: var(--font-size-retrievable);line-height: inherit;} #back-indicator-token~* font::after{content: normal;}
 
 .reorderText > div > div:not(:empty), .reorderText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty) { display: flex; flex-wrap: wrap; align-items: baseline;}

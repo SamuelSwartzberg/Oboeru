@@ -56,24 +56,29 @@ try {
 //for anything that is a box, delete leading and trailing spaces, if two boxes meet, merge their margins
 var boxSelectorString = ".contentBox, .reorderText i, #back-indicator-token~* i, .selectText u, .selectText strike, #typeans, :not(pre) > code, .highlightMain, .replaybutton, font, a, .key";
 document.querySelectorAll(boxSelectorString).forEach((item, i) => {
-    if (item.previousSibling && item.previousSibling.nodeName==="#text"){
-        var sliceindex = item.previousSibling.textContent.length-1;
-        while (item.previousSibling.textContent[sliceindex]===" ") {
-            sliceindex--;
+    if(!!item && !!item.matches && !item.matches("pre font")){
+        if (!!item.previousSibling && item.previousSibling.nodeName==="#text"){
+            var sliceindex = item.previousSibling.textContent.length-1;
+            while (item.previousSibling.textContent[sliceindex]===" ") {
+                sliceindex--;
+            }
+            item.previousSibling.textContent=item.previousSibling.textContent.slice(0,sliceindex+1);
+            if (item.previousSibling.textContent === ""){item.previousSibling.remove()}
         }
-        item.previousSibling.textContent=item.previousSibling.textContent.slice(0,sliceindex+1);
-    }
-    if (item.nextSibling && item.nextSibling.nodeName==="#text"){
-        var sliceindex = 0;
-        while (item.nextSibling.textContent[sliceindex]===" ") {
-            sliceindex++;
+        if (!!item.nextSibling && item.nextSibling.nodeName==="#text"){
+            var sliceindex = 0;
+            while (item.nextSibling.textContent[sliceindex]===" ") {
+                sliceindex++;
+            }
+            item.nextSibling.textContent=item.nextSibling.textContent.slice(sliceindex);
+            if (item.nextSibling.textContent === ""){item.nextSibling.remove()}
         }
-        item.nextSibling.textContent=item.nextSibling.textContent.slice(sliceindex);
-    }
-    if (!item.dataset.modified && item.nextSibling && item.nextSibling.matches && item.nextSibling.matches(boxSelectorString)){
-        item.style.marginRight = (parseFloat(window.getComputedStyle(item).marginRight)/2)+"px";
-        item.nextSibling.style.marginLeft = (parseFloat(window.getComputedStyle(item.nextSibling).marginLeft)/2)+"px";
-        item.dataset.modified = true;
+        console.log(!!item.nextElementSibling);
+        if (!item.dataset.modified && !!item.nextElementSibling && !!item.nextElementSibling.matches && item.nextElementSibling.matches(boxSelectorString)){
+            item.style.marginRight = (parseFloat(window.getComputedStyle(item).marginRight)/2)+"px";
+            item.nextElementSibling.style.marginLeft = (parseFloat(window.getComputedStyle(item.nextElementSibling).marginLeft)/2)+"px";
+            item.dataset.modified = true;
+        }
     }
 });
 
