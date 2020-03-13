@@ -85,7 +85,6 @@ document.querySelectorAll(boxSelectorString).forEach((item, i) => {
 document.querySelectorAll(boxSelectorString+", .ipa").forEach((item, i) => {
     var prevInnerHtml = item.innerHTML;
     item.innerHTML = item.innerHTML.trim();
-    if (prevInnerHtml !== item.innerHTML){console.log("trimmed: [" + prevInnerHtml + "] -> [" +item.innerHTML + "]");}
 });
 
 

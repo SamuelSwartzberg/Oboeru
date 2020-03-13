@@ -90,26 +90,34 @@ body{
 [data-tag*="::code::"]~*, [data-tag*="::softw::"]~*, [data-tag$="::code"]~*, [data-tag$="::softw"]~*{--red-dark-color: 9; --green-dark-color: 10; --blue-dark-color: 13;}
 
 .cardlet.frontSide{
-    color: var(--dark-full-color);
-    background-color: var(--dark-sheer-color);
-    border-color: var(--dark-tenpercent-color-no-transparency);
+    --card-font-color: var(--dark-full-color);
+    --card-bg-color: var(--dark-sheer-color);
+    --card-border-color: var(--dark-tenpercent-color-no-transparency);
     --child-deemphasize-color: var(--dark-deemphasize-color);
     --box-bg-color: var(--dark-fivepercent-color);
     --box-border-color: var(--dark-fivepercent-color);
     --box-inverted-bg-color: var(--dark-medium-bg-color);
     --box-inverted-font-color: var(--light-full-color);
-    --box-inverted-border-color: var(--black-slight-color);}
+    --box-inverted-border-color: var(--black-slight-color);
+    color: var(--card-font-color);
+    background-color: var(--card-bg-color);
+    border-color: var(--card-border-color);
+}
 
 .cardlet.backSide{
-    color: var(--light-full-color);
-    background-color: var(--dark-medium-bg-color);
-    border-color: var(--black-slight-color);
+    --card-font-color: var(--light-full-color);
+    --card-bg-color: var(--dark-medium-bg-color);
+    --card-border-color: var(--black-slight-color);
     --child-deemphasize-color: var(--light-deemphasize-color);
     --box-bg-color: var(--black-slight-color);
     --box-border-color: var(--black-slight-color);
     --box-inverted-bg-color: var(--light-full-color);
     --box-inverted-font-color: var(--dark-medium-bg-color);
-    --box-inverted-border-color: var(--black-slight-color);}
+    --box-inverted-border-color: var(--black-slight-color);
+    color: var(--card-font-color);
+    background-color: var(--card-bg-color);
+    border-color: var(--card-border-color);
+}
 
 .textDeemphasize{color: var(--child-deemphasize-color);}
 
@@ -219,7 +227,7 @@ pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(
 
 :not(pre) > code{--box-padding-scaling-factor: 0.8; --font-size-retrievable: 1.1em; font-size: var(--font-size-retrievable);}
 
-.frontSide .contentBox{ width: 100vw; box-sizing: border-box; max-width: calc(100% - 2 * var(--margins-lr)); height: 100%; }
+.frontSide .contentBox{ width: 100vw; box-sizing: border-box; max-width: calc(100% - 2 * var(--margins-lr));}
 .contentBox{ padding: var(--smallish-distance);　display: block; word-break: break-all;}
 .contentBox > div{ margin-bottom: var(--small-distance); } .contentBox > div:last-child{ margin-bottom: 0; }
 
@@ -278,3 +286,30 @@ pre font{display: inline; background-color: transparent; color: inherit !importa
 @font-face {font-family: 'KosugiMaru'; font-style: normal; src: local('_KosugiMaru');src: url('_KosugiMaru-Regular.ttf') format('truetype');}
 @font-face {font-family: 'Inconsolata'; font-style: normal; src: local('_Inconsolata');src: url('_Inconsolata.ttf') format('truetype');}
 @font-face {font-family: 'DejaVuSans'; font-style: normal; src: local('_DejaVuSans');src: url('_DejaVuSans.ttf') format('truetype');}
+
+.warning~.cardlet.frontSide{
+    animation: 5s warningColor infinite;
+    --child-deemphasize-color: rgba(155,0,0,0.7);
+    --box-bg-color: var(--dark-fivepercent-color);
+    --box-border-color: var(--dark-fivepercent-color);
+    --box-inverted-bg-color: var(--dark-medium-bg-color);
+    --box-inverted-font-color: var(--light-full-color);
+    --box-inverted-border-color: var(--black-slight-color);
+}
+@keyframes warningColor {
+    0% {
+        border-color: rgba(255,0,0,0.1);
+        background-color: rgba(255,0,0,0.05);
+        color: rgba(155,0,0,1);
+    }
+    50% {
+        border-color: rgba(255,100,0,0.1);
+        background-color: rgba(255,100,0,0.05);
+        color: rgba(155,50,0,1);
+    }
+    100% {
+        border-color: rgba(255,0,0,0.1);
+        background-color: rgba(255,0,0,0.05);
+        color: rgba(155,0,0,1);
+    }
+}
