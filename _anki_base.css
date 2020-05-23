@@ -3,6 +3,14 @@
 On desktop, #qa is a direct child of body, and on both platforms, #qa  contains the actual html we wrote
 since #qa is broken on android, we need to refer to it with .question or .answer respectively - not anymore
 */
+
+@media screen and (min-width: 1000px){
+   html{
+    font-size: 2em;
+    max-width: 1000px;
+    margin: 0 auto;}
+}
+
 /* Reset user agent or anki style rules*/
 
 hr, div:empty, br, #_flag, #_mark, #MathJax-Element-4~br{ display: none;}
@@ -34,6 +42,7 @@ textarea{ font-family: inherit; resize: none; color: inherit; border-width: 0;}
 
 pre{white-space: pre-wrap; line-height: 0; /*fix for css adding unwanted whitespace*/}
 ul, ol{margin-block-start: 0.5rem; margin-block-end: 0.5rem; list-style: inside; text-align: left; padding-inline-start: 1rem;}
+dl{text-align: left;} dt{font-style: italic;} dd{padding-left: var(--small-distance);}
 
 .background{ position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; z-Index: -1;} /*This used to be used as a background, but is now only used to make sure the correct color variables are used.*/
 
@@ -62,58 +71,66 @@ body{
     .ipa, .greek{font-family: DejaVuSans;}
 
 .background~*{
-    --dark-color: var(--red-dark-color), var(--green-dark-color), var(--blue-dark-color);
-    --dark-darkened-fifty-color: calc(var(--red-dark-color) - (var(--red-dark-color) * 0.5)), calc(var(--green-dark-color) - (var(--green-dark-color) * 0.5)), calc(var(--blue-dark-color) - (var(--blue-dark-color) * 0.5));
-    --dark-darkened-fifty-seventypercent-color: rgba(var(--dark-darkened-fifty-color),0.6);
-    --white-color: 255,255,255;
-    --dark-sheer-color: rgba(var(--dark-color),0.02);
-    --dark-full-color: rgb(var(--dark-color));
-    --dark-deemphasize-color: rgba(var(--dark-color),0.55);
-    --dark-fivepercent-color: rgba(var(--dark-color),0.05);
-    --dark-tenpercent-color: rgba(var(--dark-color),0.10);
-    --dark-tenpercent-color-no-transparency: rgb(calc(var(--red-dark-color) + (255 - var(--red-dark-color)) * 0.9), calc(var(--green-dark-color) + (255 - var(--green-dark-color)) * 0.9), calc(var(--blue-dark-color) + (255 - var(--blue-dark-color)) * 0.9));
-    --dark-fifteenpercent-color: rgba(var(--dark-color),0.15);
-    --dark-medium-bg-color: rgba(var(--dark-color), 0.7);
-    --light-full-color: rgb(var(--white-color));
-    --light-deemphasize-color: rgba(var(--white-color),0.8);
-    --black-slight-color: rgba(0,0,0,0.125);
+    --main-color-full-saturation-hs: var(--hue-dark-color), 100%;
+    --white-color: #ffffff;
+    --white-deemphasize-color: rgba(255,255,255, 0.8);
+
     --good-color: #11ce00;
     --bad-color: #f00;
     --missed-color: #888;
     --selected-color: #1cc2f6;
 }
 
-.background~*{--red-dark-color: 17; --green-dark-color: 92; --blue-dark-color: 184;}
-[data-tag*="::ja::"]~*, [data-tag$="::ja"]~*{ --red-dark-color: 200; --green-dark-color: 0; --blue-dark-color: 0;}
-[data-tag*="::es::"]~*, [data-tag$="::es"]~*{--red-dark-color: 140; --green-dark-color: 106; --blue-dark-color: 154;}
-[data-tag*="::phil::"]~*, [data-tag$="::phil"]~*{--red-dark-color: 0; --green-dark-color: 108; --blue-dark-color: 15;}
-[data-tag*="::code::"]~*, [data-tag*="::softw::"]~*, [data-tag$="::code"]~*, [data-tag$="::softw"]~*{--red-dark-color: 9; --green-dark-color: 10; --blue-dark-color: 13;}
+.background~*{--hue-dark-color: 213;}
+[data-tag*="::ja::"]~*, [data-tag$="::ja"]~*, [data-tag*="::ja "]~*{ --hue-dark-color: 0;}
+[data-tag*="::es::"]~*, [data-tag$="::es"]~*{--hue-dark-color: 283; }
+[data-tag*="::en::"]~*, [data-tag$="::en"]~*{--hue-dark-color:  227;}
+[data-tag*="::de::"]~*, [data-tag$="::de"]~*{--hue-dark-color:  0;}
+[data-tag*="::phil::"]~*, [data-tag$="::phil"]~*{--hue-dark-color:  128;}
+[data-tag*="::inf::"]~*, [data-tag$="::inf"]~*{--main-color-full-saturation-hs:  220, 13%;}
+[data-tag*="::costume::"]~*, [data-tag$="::costume"]~*{--hue-dark-color:  317;}
+[data-tag*="::bio::"]~*, [data-tag$="::bio"]~*{--hue-dark-color:  136; }
+[data-tag*="::sex::"]~*, [data-tag$="::sex"]~*, [data-tag*="::love::"]~*, [data-tag$="::love"]~*{--hue-dark-color:  333;}
+.cardlet, .imageSection img{
+  --bg-color-hs: var(--main-color-full-saturation-hs);
 
-.cardlet.frontSide{
-    --card-font-color: var(--dark-full-color);
-    --card-bg-color: var(--dark-sheer-color);
-    --card-border-color: var(--dark-tenpercent-color-no-transparency);
-    --child-deemphasize-color: var(--dark-deemphasize-color);
-    --box-bg-color: var(--dark-fivepercent-color);
-    --box-border-color: var(--dark-fivepercent-color);
-    --box-inverted-bg-color: var(--dark-medium-bg-color);
-    --box-inverted-font-color: var(--light-full-color);
-    --box-inverted-border-color: var(--black-slight-color);
+  --darkener-light-bg: hsl(var(--main-color-full-saturation-hs), 50%, 0.04);
+  --darkener-dark-bg: hsla(0,0%,0%,0.125);
+
+  --box-bg-color: var(--stacking-darkener);
+  --box-border-color: var(--stacking-darkener);
+
+  --box-inverted-bg-color: var(--card-font-color);
+  --box-inverted-font-color: var(--card-bg-color);
+  --box-inverted-border-color: var(--stacking-darkener-inverse);
+}
+.cardlet.frontSide, .imageSection img{
+    --element-color: var(--main-color-full-saturation-hs), 30%;
+
+    --stacking-darkener: var(--darkener-light-bg);
+    --stacking-darkener-inverse: var(--darkener-dark-bg);
+
+    --card-font-color: hsl(var(--element-color));
+    --card-bg-color: hsl(var(--bg-color-hs), 98%);
+    --card-border-color: hsl(var(--bg-color-hs), 95%);
+    --child-deemphasize-color: hsla(var(--element-color), 0.6);
+
     color: var(--card-font-color);
     background-color: var(--card-bg-color);
     border-color: var(--card-border-color);
 }
 
-.cardlet.backSide{
-    --card-font-color: var(--light-full-color);
-    --card-bg-color: var(--dark-medium-bg-color);
-    --card-border-color: var(--black-slight-color);
-    --child-deemphasize-color: var(--light-deemphasize-color);
-    --box-bg-color: var(--black-slight-color);
-    --box-border-color: var(--black-slight-color);
-    --box-inverted-bg-color: var(--light-full-color);
-    --box-inverted-font-color: var(--dark-medium-bg-color);
-    --box-inverted-border-color: var(--black-slight-color);
+.cardlet.backSide,  back-indicator-token~* .imageSection img{
+    --element-color: var(--main-color-full-saturation-hs), 95%;
+
+    --stacking-darkener: var(--darkener-dark-bg);
+    --stacking-darkener-inverse: var(--darkener-light-bg);
+
+    --card-font-color: var(--white-color);
+    --card-bg-color: hsl(var(--bg-color-hs), 20%);
+    --card-border-color: hsl(var(--bg-color-hs), 13%);
+    --child-deemphasize-color: hsla(var(--element-color), 0.8);
+
     color: var(--card-font-color);
     background-color: var(--card-bg-color);
     border-color: var(--card-border-color);
@@ -167,18 +184,18 @@ pre code,
 .cardlet, .imageSection img, .contentBox{
     border-style: solid; border-radius: var(--medium-distance)!important; border-width: var(--border-width-large)!important;
 }
-.imageSection img{ border-color: var(--dark-tenpercent-color-no-transparency);}
+.imageSection img{ border-color: var(--card-border-color);}
 
 /* Divergent colors */
 
 /* Good/Bad/Selected colors */
 /* Dynamically applied wrong/right colors */
-.good-element, .bad-element{color: var(--light-full-color) !important; border-color: var(--black-slight-color) !important;} .bad-element{ background-color: var(--bad-color) !important;} .good-element{background-color: var(--good-color) !important;}
+.good-element, .bad-element{color: var(--white-color) !important; border-color: var(--darkener-dark-bg) !important;} .bad-element{ background-color: var(--bad-color) !important;} .good-element{background-color: var(--good-color) !important;}
 /* Auto-applied wrong/right/missed/selected colors */
-body .typeGood,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, #back-indicator-token~* .selectText u.selected{background-color: var(--good-color); color: var(--light-full-color); border-color: var(--black-slight-color); --child-deemphasize-color: var(--light-deemphasize-color);}
-body .typeBad, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), #back-indicator-token~* .selectText strike.selected{ background-color: var(--bad-color); color: var(--light-full-color); border-color: var(--black-slight-color); --child-deemphasize-color: var(--light-deemphasize-color);}
-#back-indicator-token~* .selectText u, .typeMissed{background-color: var(--missed-color); color: var(--light-full-color); border-color: var(--black-slight-color); --child-deemphasize-color: var(--light-deemphasize-color);}
-.frontSide .contentBox.selectedBox, .frontSide .selectText .selected, .replaybutton{background-color: var(--selected-color); color: var(--light-full-color); border-color: var(--black-slight-color); --child-deemphasize-color: var(--light-deemphasize-color);}
+body .typeGood,#back-indicator-token~* .questionedElements > div > .contentBox.if-mult-choice-correct, #back-indicator-token~* .selectText u.selected{background-color: var(--good-color); color: var(--white-color); border-color: var(--darkener-dark-bg); --child-deemphasize-color: var(--white-deemphasize-color);}
+body .typeBad, #back-indicator-token~* .questionedElements > div .contentBox.selectedBox:not(.if-mult-choice-correct), #back-indicator-token~* .selectText strike.selected{ background-color: var(--bad-color); color: var(--white-color); border-color: var(--darkener-dark-bg); --child-deemphasize-color: var(--white-deemphasize-color);}
+#back-indicator-token~* .selectText u, .typeMissed{background-color: var(--missed-color); color: var(--white-color); border-color: var(--darkener-dark-bg); --child-deemphasize-color: var(--white-deemphasize-color);}
+.frontSide .contentBox.selectedBox, .frontSide .selectText .selected, .replaybutton{background-color: var(--selected-color); color: var(--white-color); border-color: var(--darkener-dark-bg); --child-deemphasize-color: var(--white-deemphasize-color);}
 /*Inverted colors*/
 a:not(.replaybutton), .key  {background-color: var(--box-inverted-bg-color); color: var(--box-inverted-font-color); border-color: var(--box-inverted-border-color); }
 
@@ -202,7 +219,7 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 .imageSection {margin: 0 0 0 calc(-1 * var(--small-distance))!important; width: calc(100% + 2 * var(--small-distance))}
 .imageSection > div{ width: 100%; height: 100%; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: baseline; }
 .imageSection img {flex-basis: 45%; min-width:45%; flex-shrink: 1; flex-grow: 1; object-fit: cover; box-sizing: border-box; margin: var(--small-distance);  line-height:0px; max-height: 65vh!important;}
-.imageSection img:only-of-type, img.fullsize-image{ flex-basis: 95%; min-width: 95%;}
+.imageSection img:only-of-type, img.fullsize-image{ flex-basis: 95%; min-width: 95%; max-height: none!important;}
 
 .cardlet { width: 100%; margin: var(--medium-distance) 0; overflow: hidden; box-sizing: border-box;}
 
@@ -223,6 +240,7 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 /*Components*/
 
 pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem);font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left;}
+pre code mark{background-color: var(--card-font-color); color: var(--white-color); border-radius: var(--tiny-distance); padding: 0.25em;}
 .ipa{ line-height: 100%; /*Make sure that large IPA symbols don't kill alignment*/} .ipa:before{ content: "["; } .ipa:after{ content: "]"; }
 
 :not(pre) > code{--box-padding-scaling-factor: 0.8; --font-size-retrievable: 1.1em; font-size: var(--font-size-retrievable);}
@@ -236,8 +254,10 @@ pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(
 #typeans br { display: block; }
 #typeans>span { padding: var(--small-distance); border-radius: var(--small-distance); margin: var(--tiny-distance); line-height: 3.5rem; }
 
-font{font-size: 0px;line-height: 0px; border: none; background-color: var(--dark-fifteenpercent-color); color: rgb(var(--dark-darkened-fifty-color)) !important;} /*fake clozes*/ font::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
-pre font{display: inline; background-color: transparent; color: inherit !important; border: none; border-radius: 0; padding: 0; margin: 0;} pre font::after{content: "___";}
+font{font-size: 0px;line-height: 0px; border: none; background-color: hsla(var(--element-color), 0.15); color: hsl(var(--main-color-full-saturation-hs), 10%) !important;} /*fake clozes*/ font::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
+pre font{display: inline; background-color: transparent; color: inherit !important; border: none; border-radius: 0; padding: 0; margin: 0;} pre font::after{content: "___";} #back-indicator-token~* pre font{text-decoration: underline; text-decoration-color: inherit; font-weight: bold;}
+span.hint{text-decoration: underline;}span.hint::before{content: "(";} span.hint::after{content: ")";}
+#back-indicator-token~* span.hint {display: none;}
 #back-indicator-token~* font {font-size: var(--font-size-retrievable);line-height: inherit;} #back-indicator-token~* font::after{content: normal;}
 
 .reorderText > div > div:not(:empty), .reorderText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty) { display: flex; flex-wrap: wrap; align-items: baseline;}
@@ -254,7 +274,7 @@ pre font{display: inline; background-color: transparent; color: inherit !importa
 /* Sketchpad */
 #control-container{ display: flex; flex-direction: column; position: absolute; margin-right: var(--large-distance); margin-top: var(--small-distance); right: 0; }
 #control-container > div{margin-top: var(--small-distance); margin-bottom: var(--small-distance);}
-#control-container svg { fill: var(--dark-tenpercent-color-no-transparency)!important;}
+#control-container svg { fill: var(--card-border-color)!important;}
 #color-picker-toggle{height: var(--square-tappable-distance); width: var(--square-tappable-distance);}
 #sketchpadContainer{height: 30vh; background-repeat: no-repeat; background-size: cover;}
 #color-picker{display: none;}
@@ -263,20 +283,20 @@ pre font{display: inline; background-color: transparent; color: inherit !importa
 /* Calculator */
 .calc {width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; font-weight: 300; box-sizing: border-box; overflow: hidden; }
 .calc *{ box-sizing: border-box; }
-.top { width: 100%; color: var(--dark-full-color); }
+.top { width: 100%; color: var(--element-color); }
 .result { box-sizing: border-box; width: 100%; height: 3.6rem; font-size: 16px; margin: 0; padding: 7px 10px 0px 10px; text-align: left; opacity: 0.6; overflow: hidden; }
 .screen { width: 100%; height: 50px; border: 0; font-size: 30px; padding: 0px 20px 5px 5px; text-align: right; display: flex; align-items: baseline; justify-content: flex-end; overflow: hidden; }
 .hints { opacity: 0.3; }
-.keyboard { background-color: var(--dark-fivepercent-color); width: 100%; }
+.keyboard { background-color: var(--stacking-darkener); width: 100%; }
 .crow { display: flex; flex-direction: row; align-items: stretch; justify-content: space-around; width: 100%; min-height: 50px; margin: auto; }
-.cb { box-sizing: border-box; width: 100%; background-color: var(--dark-fivepercent-color); cursor: pointer; display: flex; flex-direction: row; align-items: center; justify-content: center; box-shadow: none; transition: all 0.2s; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; -o-user-select: none;}
+.cb { box-sizing: border-box; width: 100%; background-color: var(--stacking-darkener); cursor: pointer; display: flex; flex-direction: row; align-items: center; justify-content: center; box-shadow: none; transition: all 0.2s; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; -o-user-select: none;}
 .screentext {display: flex;flex-direction: row;align-items: center;justify-content: center;}
 .animated {position: relative;top: 0;animation: movetext1 .2s 1;}
 @keyframes movetext1 {0% {top: 100px;}100% {top: 0px;}}
 .calc sup {vertical-align: text-top;font-size: 0.5em;}
 .inv {display: none;}
-.lighter {background-color: var(--light-deemphasize-color);font-size: 1.2rem;}
-.operands, .enter {background-color: var(--dark-fifteenpercent-color); font-size: 1.6rem;}
+.lighter {background-color: var(--stacking-darkener);font-size: 1.2rem;}
+.operands, .enter {background-color: var(--card-border-color); font-size: 1.6rem;}
 
 /* Personal collection-specific color manipulation*/
 .extraInfoSection img[src*=".png"] { filter: invert(100%) brightness(1.5) blur(0.1px); height: 1em; opacity: 0.7; vertical-align: text-top; display: inline;}
@@ -289,12 +309,7 @@ pre font{display: inline; background-color: transparent; color: inherit !importa
 
 .warning~.cardlet.frontSide{
     animation: 5s warningColor infinite;
-    --child-deemphasize-color: rgba(155,0,0,0.7);
-    --box-bg-color: var(--dark-fivepercent-color);
-    --box-border-color: var(--dark-fivepercent-color);
-    --box-inverted-bg-color: var(--dark-medium-bg-color);
-    --box-inverted-font-color: var(--light-full-color);
-    --box-inverted-border-color: var(--black-slight-color);
+    --child-deemphasize-color: hsla(213,81.3%,39.4%,0.7);
 }
 @keyframes warningColor {
     0% {
