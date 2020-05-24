@@ -37,13 +37,17 @@ if(isFront()){
                     for (var m = 0; m < parentDiv.children.length; m++) { //for all children of a div containers, i and non-i
                         if(parentDiv.children[m].nodeName==="I" /*If the element is a i*/ && m>0 /*The first element will not hav previous nodes*/){
                             var prevNodeIndex = m-1; var offsetCounter = 1; //Get the index of the previous node
+                            console.log(parentDiv.children);
                             while (parentDiv.children[prevNodeIndex].nodeName!=="I") { //While that previous node isn't a i element, which we don't need to reorder
+
                                 parentDiv.children[prevNodeIndex].style.order=(Number(parentDiv.children[m].getAttribute("index"))*10)-offsetCounter; //Set that element's order to the index of the last found i element (times ten, because that's the order step) minus the amount of non-i elemments we found, thereby preserving the order
                                 prevNodeIndex--; offsetCounter++;
+                                console.log(prevNodeIndex);
                             }
                         } else if (m===parentDiv.children.length-1 && parentDiv.children[m].nodeName!=="I") { //What if the last n nodes are text nodes?
                             console.log("hello i am the last element");
                             var prevNodeIndex = m; var offsetCounter = 1; //Get the index of this node, too
+                            console.log(parentDiv);
                             while (parentDiv.children[prevNodeIndex].nodeName!=="I") { //While that previous node isn't a i element, which we don't need to reorder
                                 parentDiv.children[prevNodeIndex].style.order=1000000-offsetCounter; //Elements at end, so we don't have to worry about order except relatively to each other
                                 prevNodeIndex--; offsetCounter++;
