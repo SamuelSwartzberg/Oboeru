@@ -124,7 +124,7 @@ factor is
     --card-font-color: hsl(var(--element-color));
     --card-bg-color: hsl(var(--main-color-full-saturation-hs), calc(98% * (1 - 0.02 * var(--c-adj-fact))));
     --card-border-color: hsl(var(--main-color-full-saturation-hs), calc(95% * (1 - 0.05 * var(--c-adj-fact))));
-    --child-deemphasize-color: hsla(var(--element-color), 0.8);
+    --child-deemphasize-color: hsla(var(--element-color), 0.7);
 
 }
 
@@ -136,7 +136,7 @@ factor is
     --card-font-color: var(--white-color);
     --card-bg-color: hsl(var(--hue-dark-color), 75%, calc(45% * (1 - 0.55 *var(--c-adj-fact))));
     --card-border-color: hsl(var(--hue-dark-color), 75%, calc(40% * (1 - 0.6*var(--c-adj-fact))));
-    --child-deemphasize-color: hsla(var(--element-color), 0.8);
+    --child-deemphasize-color: hsl(var(--hue-dark-color), 100%, calc(95% * (1 - 0.05 *var(--c-adj-fact))));
 
 }
 
@@ -242,6 +242,9 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 .inputSection {margin: var(--small-distance) 0;}
 
 /*Components*/
+
+.tag-set{ display: block; } .tag-set.hidden{ display: none; }
+.tag{ text-transform: capitalize; } .tag.highlight{ color: var(--card-font-color); } .tag:first-of-type{ display: none; } .tag:not(:last-child):after{ content: " > "; opacity: 0.5; }
 
 pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem);font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left;}
 pre code mark{background-color: var(--card-font-color); color: var(--white-color); border-radius: var(--tiny-distance); padding: 0.25em;}
