@@ -81,20 +81,28 @@ body{
     --selected-color: #1cc2f6;
 }
 
-.background~*{--hue-dark-color: 213;}
-[data-tag*="::ja::"]~*, [data-tag$="::ja"]~*, [data-tag*="::ja "]~*{ --hue-dark-color: 0;}
+/*If the color is between 30 and 230, needs a corrective factor to fix the fact that green, yellow and cyan are too light
+factor is
+0.2 between 30 and 60,
+0.3 between 60 and 200,
+0.2 between 230 and 260
+*/
+.background~*{--hue-dark-color: 230; --c-adj-fact:0;}
+[data-tag*="::ja::"]~*, [data-tag$="::ja"]~*, [data-tag*="::ja "]~*{ --hue-dark-color: 350;}
 [data-tag*="::es::"]~*, [data-tag$="::es"]~*{--hue-dark-color: 283; }
-[data-tag*="::en::"]~*, [data-tag$="::en"]~*{--hue-dark-color:  227;}
+[data-tag*="::en::"]~*, [data-tag$="::en"]~*{--hue-dark-color:  227; --c-adj-fact:0.2;}
 [data-tag*="::de::"]~*, [data-tag$="::de"]~*{--hue-dark-color:  0;}
-[data-tag*="::phil::"]~*, [data-tag$="::phil"]~*{--hue-dark-color:  128;}
+[data-tag*="::phil::"]~*, [data-tag$="::phil"]~*{--hue-dark-color:  128;--c-adj-fact:0.3;}
 [data-tag*="::inf::"]~*, [data-tag$="::inf"]~*{--main-color-full-saturation-hs:  220, 13%;}
 [data-tag*="::costume::"]~*, [data-tag$="::costume"]~*{--hue-dark-color:  317;}
-[data-tag*="::bio::"]~*, [data-tag$="::bio"]~*{--hue-dark-color:  136; }
+[data-tag*="::bio::"]~*, [data-tag$="::bio"]~*{--hue-dark-color:  136; --c-adj-fact:0.3;}
 [data-tag*="::sex::"]~*, [data-tag$="::sex"]~*, [data-tag*="::love::"]~*, [data-tag$="::love"]~*{--hue-dark-color:  333;}
+[data-tag*="::ling::"]~*, [data-tag$="::ling"]~*{--hue-dark-color:  186; --c-adj-fact:0.3; }
+[data-tag*="::f-of-a::"]~*, [data-tag$="::f-of-a"]~*{--hue-dark-color:  15; }
 .cardlet, .imageSection img{
-  --bg-color-hs: var(--main-color-full-saturation-hs);
+  --element-color: var(--main-color-full-saturation-hs), calc(40% * (1 - 0.60 * var(--c-adj-fact)));
 
-  --darkener-light-bg: hsl(var(--main-color-full-saturation-hs), 50%, 0.04);
+  --darkener-light-bg: hsla(var(--main-color-full-saturation-hs), 50%, 0.04);
   --darkener-dark-bg: hsla(0,0%,0%,0.125);
 
   --box-bg-color: var(--stacking-darkener);
@@ -103,37 +111,33 @@ body{
   --box-inverted-bg-color: var(--card-font-color);
   --box-inverted-font-color: var(--card-bg-color);
   --box-inverted-border-color: var(--stacking-darkener-inverse);
+
+  color: var(--card-font-color);
+  background-color: var(--card-bg-color);
+  border-color: var(--card-border-color);
 }
 .cardlet.frontSide, .imageSection img{
-    --element-color: var(--main-color-full-saturation-hs), 30%;
 
     --stacking-darkener: var(--darkener-light-bg);
     --stacking-darkener-inverse: var(--darkener-dark-bg);
 
     --card-font-color: hsl(var(--element-color));
-    --card-bg-color: hsl(var(--bg-color-hs), 98%);
-    --card-border-color: hsl(var(--bg-color-hs), 95%);
-    --child-deemphasize-color: hsla(var(--element-color), 0.6);
+    --card-bg-color: hsl(var(--main-color-full-saturation-hs), calc(98% * (1 - 0.02 * var(--c-adj-fact))));
+    --card-border-color: hsl(var(--main-color-full-saturation-hs), calc(95% * (1 - 0.05 * var(--c-adj-fact))));
+    --child-deemphasize-color: hsla(var(--element-color), 0.8);
 
-    color: var(--card-font-color);
-    background-color: var(--card-bg-color);
-    border-color: var(--card-border-color);
 }
 
 .cardlet.backSide,  back-indicator-token~* .imageSection img{
-    --element-color: var(--main-color-full-saturation-hs), 95%;
 
     --stacking-darkener: var(--darkener-dark-bg);
     --stacking-darkener-inverse: var(--darkener-light-bg);
 
     --card-font-color: var(--white-color);
-    --card-bg-color: hsl(var(--bg-color-hs), 20%);
-    --card-border-color: hsl(var(--bg-color-hs), 13%);
+    --card-bg-color: hsl(var(--hue-dark-color), 75%, calc(45% * (1 - 0.55 *var(--c-adj-fact))));
+    --card-border-color: hsl(var(--hue-dark-color), 75%, calc(40% * (1 - 0.6*var(--c-adj-fact))));
     --child-deemphasize-color: hsla(var(--element-color), 0.8);
 
-    color: var(--card-font-color);
-    background-color: var(--card-bg-color);
-    border-color: var(--card-border-color);
 }
 
 .textDeemphasize{color: var(--child-deemphasize-color);}
