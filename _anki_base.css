@@ -38,7 +38,8 @@ blockquote, abbr, acronym, address, big, cite, del, dfn, ins, section, summary,
 time, mark, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td, article, aside{ margin: 0; padding: 0; border: 0;}
 
-textarea{ font-family: inherit; resize: none; color: inherit; border-width: 0;}
+textarea{ font-family: inherit; resize: none; color: inherit; font: inherit; border-width: 0; display: block;}
+textarea:focus{ outline: none; box-shadow:none; border-color:transparent; }
 
 pre{white-space: pre-wrap; line-height: 0; /*fix for css adding unwanted whitespace*/}
 ul, ol{margin-block-start: 0.5rem; margin-block-end: 0.5rem; list-style: inside; text-align: left; padding-inline-start: 1rem;}
@@ -122,6 +123,7 @@ factor is
     --stacking-darkener-inverse: var(--darkener-dark-bg);
 
     --card-font-color: hsl(var(--element-color));
+    --card-inverse-font-color: var(--white-color);
     --card-bg-color: hsl(var(--main-color-full-saturation-hs), calc(98% * (1 - 0.02 * var(--c-adj-fact))));
     --card-border-color: hsl(var(--main-color-full-saturation-hs), calc(95% * (1 - 0.05 * var(--c-adj-fact))));
     --child-deemphasize-color: hsla(var(--element-color), 0.7);
@@ -134,13 +136,15 @@ factor is
     --stacking-darkener-inverse: var(--darkener-light-bg);
 
     --card-font-color: var(--white-color);
-    --card-bg-color: hsl(var(--hue-dark-color), 75%, calc(45% * (1 - 0.55 *var(--c-adj-fact))));
+    --inverse-font-color: hsl(var(--hue-dark-color), 75%, calc(45% * (1 - 0.55 *var(--c-adj-fact))));
+    --card-bg-color: var(--inverse-font-color);
     --card-border-color: hsl(var(--hue-dark-color), 75%, calc(40% * (1 - 0.6*var(--c-adj-fact))));
     --child-deemphasize-color: hsl(var(--hue-dark-color), 100%, calc(95% * (1 - 0.05 *var(--c-adj-fact))));
 
 }
 
 .textDeemphasize{color: var(--child-deemphasize-color);}
+::selection{background-color: rgba(0,0,0,0.1);}
 
 /*Boxes*/
 .contentBox,
@@ -153,6 +157,7 @@ factor is
 .highlightMain,
 .replaybutton,
 font,
+span.cloze,
 a,
 .key{
     background-color: var(--box-bg-color);
@@ -246,8 +251,8 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 .tag-set{ display: block; } .tag-set.hidden{ display: none; }
 .tag{ text-transform: capitalize; } .tag.highlight{ color: var(--card-font-color); } .tag:first-of-type{ display: none; } .tag:not(:last-child):after{ content: " > "; opacity: 0.5; }
 
-pre{overflow: hidden; margin: var(--tiny-distance) 0;} pre code{min-width: calc(100vw - 6.5rem);font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left;}
-pre code mark{background-color: var(--card-font-color); color: var(--white-color); border-radius: var(--tiny-distance); padding: 0.25em;}
+pre{overflow: hidden; margin: var(--tiny-distance) 0; } pre code{min-width: calc(100vw - 6.5rem);font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left; tab-size: 2;}
+pre code mark{background-color: var(--card-font-color); color: var(--card-inverse-font-color); border-radius: var(--tiny-distance); padding: 0.25em;}
 .ipa{ line-height: 100%; /*Make sure that large IPA symbols don't kill alignment*/} .ipa:before{ content: "["; } .ipa:after{ content: "]"; }
 
 :not(pre) > code{--box-padding-scaling-factor: 0.8; --font-size-retrievable: 1.1em; font-size: var(--font-size-retrievable);}
@@ -256,16 +261,19 @@ pre code mark{background-color: var(--card-font-color); color: var(--white-color
 .contentBox{ padding: var(--smallish-distance);　display: block; word-break: break-all;}
 .contentBox > div{ margin-bottom: var(--small-distance); } .contentBox > div:last-child{ margin-bottom: 0; }
 
-.inputSection center{margin-bottom: 35vh;}
+.inputSection center{margin-bottom: 45vh;}
 #typeans { text-align: center; display: inline-block; padding: var(--medium-distance); max-width: fit-content; word-break: break-all; border: none; font-size: var(--large-distance) !important;}
 #typeans br { display: block; }
 #typeans>span { padding: var(--small-distance); border-radius: var(--small-distance); margin: var(--tiny-distance); line-height: 3.5rem; }
 
-font{font-size: 0px;line-height: 0px; border: none; background-color: hsla(var(--element-color), 0.15); color: hsl(var(--main-color-full-saturation-hs), 10%) !important;} /*fake clozes*/ font::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
-pre font{display: inline; background-color: transparent; color: inherit !important; border: none; border-radius: 0; padding: 0; margin: 0;} pre font::after{content: "___";} #back-indicator-token~* pre font{text-decoration: underline; text-decoration-color: inherit; font-weight: bold;}
+font, span.cloze{font-size: 0px;line-height: 0px; border: none; background-color: hsla(var(--element-color), 0.15); color: hsl(var(--main-color-full-saturation-hs), 10%) !important; user-select: none;} /*fake clozes*/ font::after, span.cloze::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
+pre font, pre span.cloze{display: inline; background-color: transparent; color: inherit !important; border: none; border-radius: 0; padding: 0; margin: 0; } pre font::after, pre span.cloze::after{content: "___"; }
+#back-indicator-token~* pre font, #back-indicator-token~* pre span.cloze {text-decoration: underline; text-decoration-color: inherit; font-weight: bold;}
+#back-indicator-token~* font, #back-indicator-token~* span.cloze {font-size: var(--font-size-retrievable);line-height: inherit; user-select: text;} #back-indicator-token~* font::after, #back-indicator-token~* span.cloze::after{content: normal;}
 span.hint{text-decoration: underline;}span.hint::before{content: "(";} span.hint::after{content: ")";}
 #back-indicator-token~* span.hint {display: none;}
-#back-indicator-token~* font {font-size: var(--font-size-retrievable);line-height: inherit;} #back-indicator-token~* font::after{content: normal;}
+span.scramble{font-size: 0px;line-height: 0px;} span.scramble::after{content:"$ç®å₼₿₤€∂"; font-size: var(--font-size-retrievable); line-height: initial;}
+#back-indicator-token~* span.scramble {font-size: var(--font-size-retrievable);line-height: inherit; } #back-indicator-token~* span.scramble::after{content: normal;}
 
 .reorderText > div > div:not(:empty), .reorderText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty), .selectText > div > div > div:not(:empty) { display: flex; flex-wrap: wrap; align-items: baseline;}
 
@@ -274,9 +282,10 @@ span.hint{text-decoration: underline;}span.hint::before{content: "(";} span.hint
 .replaybutton { padding: 0; box-sizing: border-box; z-index: 10; }
 
 /* Text scratchpad */
-#content .scratchpad:last-of-type {margin-bottom: 40vh!important;}
-.scratchpad>div{padding: var(--smallish-distance);}
-.scratchpad textarea{width: 100%; min-height: calc(5 * var(--medium-distance));}
+#content .scratchpad:last-of-type {margin-bottom: 48vh!important;}
+.scratchpad>div{padding: var(--small-distance);}
+.scratchpad textarea{width: 100%; min-height: calc(5 * var(--medium-distance)); padding: var(--small-distance); box-sizing: border-box;}
+.scratchpad>div:focus-within { background-color: var(--card-border-color); } textarea:focus { background-color: var(--card-bg-color); }
 
 /* Sketchpad */
 #control-container{ display: flex; flex-direction: column; position: absolute; margin-right: var(--large-distance); margin-top: var(--small-distance); right: 0; }
@@ -315,23 +324,29 @@ span.hint{text-decoration: underline;}span.hint::before{content: "(";} span.hint
 @font-face {font-family: 'DejaVuSans'; font-style: normal; src: local('_DejaVuSans');src: url('_DejaVuSans.ttf') format('truetype');}
 
 .warning~.cardlet.frontSide{
-    animation: 5s warningColor infinite;
-    --child-deemphasize-color: hsla(213,81.3%,39.4%,0.7);
+  animation-duration: 1s;
+  animation-name: shortRed;
 }
-@keyframes warningColor {
-    0% {
-        border-color: rgba(255,0,0,0.1);
-        background-color: rgba(255,0,0,0.05);
-        color: rgba(155,0,0,1);
-    }
-    50% {
-        border-color: rgba(255,100,0,0.1);
-        background-color: rgba(255,100,0,0.05);
-        color: rgba(155,50,0,1);
-    }
-    100% {
-        border-color: rgba(255,0,0,0.1);
-        background-color: rgba(255,0,0,0.05);
-        color: rgba(155,0,0,1);
-    }
+
+@keyframes shortRed {
+  25%, 75% {
+    --stacking-darkener: var(--darkener-dark-bg);
+    --stacking-darkener-inverse: var(--darkener-light-bg);
+
+    --card-font-color: var(--white-color);
+    --card-bg-color: hsl(190, 100%, 50%);
+    --card-border-color: hsl(190, 100%, 48%);
+    --child-deemphasize-color: hsl(0, 100%, calc(95% * (1 - 0.05 *var(--c-adj-fact))));
+  }
+  50%, 100% {
+
+        --stacking-darkener: var(--darkener-light-bg);
+        --stacking-darkener-inverse: var(--darkener-dark-bg);
+
+        --card-font-color: hsl(var(--element-color));
+        --card-bg-color: hsl(var(--main-color-full-saturation-hs), calc(98% * (1 - 0.02 * var(--c-adj-fact))));
+        --card-border-color: hsl(var(--main-color-full-saturation-hs), calc(95% * (1 - 0.05 * var(--c-adj-fact))));
+        --child-deemphasize-color: hsla(var(--element-color), 0.7);
+
+  }
 }
