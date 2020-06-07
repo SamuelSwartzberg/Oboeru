@@ -36,6 +36,9 @@ if(!(document.querySelector('#frontTags').dataset.modified === "true")){
 }
 
 document.querySelectorAll('pre code').forEach((block) => {
-    if(!!codeType){block.classList.add(codeType)};
+    if(block.dataset.codetype) codeType = block.dataset.codetype;
+    if(codeType){
+      block.dataset.codetype = codeType;
+      block.classList.add(codeType)};
     hljs.highlightBlock(block);
   });

@@ -251,7 +251,9 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 .tag-set{ display: block; } .tag-set.hidden{ display: none; }
 .tag{ text-transform: capitalize; } .tag.highlight{ color: var(--card-font-color); } .tag:first-of-type{ display: none; } .tag:not(:last-child):after{ content: " > "; opacity: 0.5; }
 
-pre{overflow: hidden; margin: var(--tiny-distance) 0; } pre code{min-width: calc(100vw - 6.5rem);font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left; tab-size: 2;}
+pre{overflow: hidden; margin: var(--tiny-distance) 0; position: relative;} pre code{min-width: calc(100vw - 6.5rem);font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left; tab-size: 2;}
+pre code::after{content:attr(data-codetype); text-transform: uppercase; position: absolute; top: var(--tiny-distance); right: var(--small-distance);}
+pre code.css::after{color: #008FB3;}pre code.html::after{color: #E44D26;}
 pre code mark{background-color: var(--card-font-color); color: var(--card-inverse-font-color); border-radius: var(--tiny-distance); padding: 0.25em;}
 .ipa{ line-height: 100%; /*Make sure that large IPA symbols don't kill alignment*/} .ipa:before{ content: "["; } .ipa:after{ content: "]"; }
 
@@ -266,7 +268,7 @@ pre code mark{background-color: var(--card-font-color); color: var(--card-invers
 #typeans br { display: block; }
 #typeans>span { padding: var(--small-distance); border-radius: var(--small-distance); margin: var(--tiny-distance); line-height: 3.5rem; }
 
-font, span.cloze{font-size: 0px;line-height: 0px; border: none; background-color: hsla(var(--element-color), 0.15); color: hsl(var(--main-color-full-saturation-hs), 10%) !important; user-select: none;} /*fake clozes*/ font::after, span.cloze::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
+font, span.cloze{font-size: 0px;line-height: 0px; border: none; background-color: hsla(var(--element-color), 0.15); user-select: none;} /*fake clozes*/ font::after, span.cloze::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
 pre font, pre span.cloze{display: inline; background-color: transparent; color: inherit !important; border: none; border-radius: 0; padding: 0; margin: 0; } pre font::after, pre span.cloze::after{content: "___"; }
 #back-indicator-token~* pre font, #back-indicator-token~* pre span.cloze {text-decoration: underline; text-decoration-color: inherit; font-weight: bold;}
 #back-indicator-token~* font, #back-indicator-token~* span.cloze {font-size: var(--font-size-retrievable);line-height: inherit; user-select: text;} #back-indicator-token~* font::after, #back-indicator-token~* span.cloze::after{content: normal;}
