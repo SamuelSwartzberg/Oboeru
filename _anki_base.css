@@ -94,7 +94,7 @@ factor is
 [data-tag*="::en::"]~*, [data-tag$="::en"]~*{--hue-dark-color:  227; --c-adj-fact:0.2;}
 [data-tag*="::de::"]~*, [data-tag$="::de"]~*{--hue-dark-color:  0;}
 [data-tag*="::phil::"]~*, [data-tag$="::phil"]~*{--hue-dark-color:  128;--c-adj-fact:0.3;}
-[data-tag*="::inf::"]~*, [data-tag$="::inf"]~*{--main-color-full-saturation-hs:  220, 13%;}
+[data-tag*="::inf::"]~*, [data-tag$="::inf"]~*{--main-color-full-saturation-hs:  220, 13%;} [data-tag*="::inf::"]~*.cardlet.backSide,  back-indicator-token~[data-tag*="::inf::"]~* .imageSection img{ --ui-saturation: 13%; --ui-lightness: 0.25;}
 [data-tag*="::costume::"]~*, [data-tag$="::costume"]~*{--hue-dark-color:  317;}
 [data-tag*="::bio::"]~*, [data-tag$="::bio"]~*{--hue-dark-color:  136; --c-adj-fact:0.3;}
 [data-tag*="::sex::"]~*, [data-tag$="::sex"]~*, [data-tag*="::love::"]~*, [data-tag$="::love"]~*{--hue-dark-color:  333;}
@@ -103,8 +103,8 @@ factor is
 .cardlet, .imageSection img{
   --element-color: var(--main-color-full-saturation-hs), calc(40% * (1 - 0.60 * var(--c-adj-fact)));
 
-  --darkener-light-bg: hsla(var(--main-color-full-saturation-hs), 50%, 0.04);
-  --darkener-dark-bg: hsla(0,0%,0%,0.125);
+  --darkener-light-bg: hsla(var(--main-color-full-saturation-hs), 50%, 0.07);
+  --darkener-dark-bg: hsla(0,0%,0%,0.15);
 
   --box-bg-color: var(--stacking-darkener);
   --box-border-color: var(--stacking-darkener);
@@ -135,11 +135,24 @@ factor is
     --stacking-darkener: var(--darkener-dark-bg);
     --stacking-darkener-inverse: var(--darkener-light-bg);
 
-    --card-font-color: var(--white-color);
-    --inverse-font-color: hsl(var(--hue-dark-color), 75%, calc(45% * (1 - 0.55 *var(--c-adj-fact))));
+    /* We will use these to calculate the colors of the backside */
+    --ui-saturation: 75%;
+    --font-saturation: 100%;
+    --ui-lightness: 0.45; --q-ui-lightness: calc( 1 - var(--ui-lightness)); /* q by analogy from q = 1 - p */
+    --font-lightness: 1; --q-font-lightness: calc( 1 - var(--font-lightness));
+    --downstep: 0.05;
+
+    /* The actual colors of the backside. Each color has a calc for lightness to split up the code for readability */
+    --calc-font-lightness: calc((var(--font-lightness)*100%) * (var(--font-lightness) - var(--q-font-lightness) * var(--c-adj-fact)));
+      --card-font-color: hsl(var(--hue-dark-color), var(--font-saturation), var(--calc-font-lightness));
+    --calc-deemphasize-lightness: calc(( (var(--font-lightness) - var(--downstep)) * 100% ) * (var(--font-lightness) - (var(--q-font-lightness) + var(--downstep)) * var(--c-adj-fact)));
+      --child-deemphasize-color: hsl(var(--hue-dark-color), var(--font-saturation), var(--calc-deemphasize-lightness));
+    --calc-inverse-font-lightness: calc((var(--ui-lightness)*100%) * (1 - var(--q-ui-lightness) *var(--c-adj-fact)));
+      --inverse-font-color: hsl(var(--hue-dark-color), var(--ui-saturation), var(--calc-inverse-font-lightness));
+    --calc-border-lightness: calc((( var(--ui-lightness) - var(--downstep) ) * 100%)  * (1 - (var(--q-ui-lightness) + var(--downstep)) * var(--c-adj-fact)));
+      --card-border-color: hsl(var(--hue-dark-color), var(--ui-saturation), var(--calc-border-lightness));
     --card-bg-color: var(--inverse-font-color);
-    --card-border-color: hsl(var(--hue-dark-color), 75%, calc(40% * (1 - 0.6*var(--c-adj-fact))));
-    --child-deemphasize-color: hsl(var(--hue-dark-color), 100%, calc(95% * (1 - 0.05 *var(--c-adj-fact))));
+
 
 }
 
@@ -179,7 +192,7 @@ a,
 }
 
 /*Divergent sizes*/
-.replaybutton, .key{ width: var(--square-size); height: var(--square-size); }
+.replaybutton, .key{ min-width: var(--square-size); height: var(--square-size); }
 
 /*Non-box rectangles*/
 .scratchpad textarea,
@@ -251,10 +264,13 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 .tag-set{ display: block; } .tag-set.hidden{ display: none; }
 .tag{ text-transform: capitalize; } .tag.highlight{ color: var(--card-font-color); } .tag:first-of-type{ display: none; } .tag:not(:last-child):after{ content: " > "; opacity: 0.5; }
 
-pre{overflow: hidden; margin: var(--tiny-distance) 0; position: relative;} pre code{min-width: calc(100vw - 6.5rem);font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding-top: var(--smallish-distance); padding-bottom: var(--smallish-distance); padding-left: var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left; tab-size: 2;}
+pre{overflow: hidden; margin: var(--tiny-distance) 0; position: relative;} pre code{ box-sizing: border-box; width: 10000px; max-width: 100%;font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding: var(--smallish-distance) var(--large-distance) var(--smallish-distance) var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left; tab-size: 2; }
 pre code::after{content:attr(data-codetype); text-transform: uppercase; position: absolute; top: var(--tiny-distance); right: var(--small-distance);}
-pre code.css::after{color: #008FB3;}pre code.html::after{color: #E44D26;}
+pre code.css::after{color: #008FB3;}pre code.html::after{color: #E44D26;} pre code.js::after{color: #CC9600;} pre code.sh::after, pre code.bash::after{color: #EB0000;} pre code.cs::after{color: #9742FF;}
+pre code.java::after{color: #017DBC;} pre code.md::after{color: #E4016F;}
 pre code mark{background-color: var(--card-font-color); color: var(--card-inverse-font-color); border-radius: var(--tiny-distance); padding: 0.25em;}
+pre code span.optional-details {max-width: 8ch; overflow: hidden; text-overflow: ellipsis; display:inline-block; vertical-align: bottom; white-space: nowrap;}
+
 .ipa{ line-height: 100%; /*Make sure that large IPA symbols don't kill alignment*/} .ipa:before{ content: "["; } .ipa:after{ content: "]"; }
 
 :not(pre) > code{--box-padding-scaling-factor: 0.8; --font-size-retrievable: 1.1em; font-size: var(--font-size-retrievable);}
@@ -268,11 +284,11 @@ pre code mark{background-color: var(--card-font-color); color: var(--card-invers
 #typeans br { display: block; }
 #typeans>span { padding: var(--small-distance); border-radius: var(--small-distance); margin: var(--tiny-distance); line-height: 3.5rem; }
 
-font, span.cloze{font-size: 0px;line-height: 0px; border: none; background-color: hsla(var(--element-color), 0.15); user-select: none;} /*fake clozes*/ font::after, span.cloze::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
+font, span.cloze{font-size: 0px;line-height: 0px; border: none; background-color: var(--stacking-darkener); user-select: none;} /*fake clozes*/ font::after, span.cloze::after{content: "\a0"; font-size: var(--font-size-retrievable); line-height: initial; display: inherit; width: 3ch;}
 pre font, pre span.cloze{display: inline; background-color: transparent; color: inherit !important; border: none; border-radius: 0; padding: 0; margin: 0; } pre font::after, pre span.cloze::after{content: "___"; }
-#back-indicator-token~* pre font, #back-indicator-token~* pre span.cloze {text-decoration: underline; text-decoration-color: inherit; font-weight: bold;}
-#back-indicator-token~* font, #back-indicator-token~* span.cloze {font-size: var(--font-size-retrievable);line-height: inherit; user-select: text;} #back-indicator-token~* font::after, #back-indicator-token~* span.cloze::after{content: normal;}
-span.hint{text-decoration: underline;}span.hint::before{content: "(";} span.hint::after{content: ")";}
+#back-indicator-token~* pre font, #back-indicator-token~* pre span.cloze { border-bottom: 0.1em solid black; font-weight: bold;}
+#back-indicator-token~* font, #back-indicator-token~* span.cloze {font-size: var(--font-size-retrievable);line-height: inherit; user-select: text;  } #back-indicator-token~* font::after, #back-indicator-token~* span.cloze::after{content: normal;}
+span.hint{text-decoration: underline;} span.hint::before{content: "(";} span.hint::after{content: ")";}
 #back-indicator-token~* span.hint {display: none;}
 span.scramble{font-size: 0px;line-height: 0px;} span.scramble::after{content:"$ç®å₼₿₤€∂"; font-size: var(--font-size-retrievable); line-height: initial;}
 #back-indicator-token~* span.scramble {font-size: var(--font-size-retrievable);line-height: inherit; } #back-indicator-token~* span.scramble::after{content: normal;}
