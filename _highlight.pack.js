@@ -36,9 +36,9 @@ if(!(document.querySelector('#frontTags').dataset.modified === "true")){
 }
 
 document.querySelectorAll('pre code').forEach((block) => {
-    if(block.dataset.codetype){
+    if(block.dataset.codetype){ //we want to prefer explicitly set codetypes
       block.classList.add(block.dataset.codetype);}
-    else if(codeType){
+    else if(codeType){ //but if it hasn't been set, we want to default to the codetype extracted from the tags above
       block.dataset.codetype = codeType;
       block.classList.add(codeType)};
     hljs.highlightBlock(block);
