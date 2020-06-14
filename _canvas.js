@@ -57,7 +57,7 @@ ctx = canvas.getContext('2d');
 if (ctx) {
     if(futureBGImage){
         canvas.width = futureBGImage.width; canvas.height = futureBGImage.height;
-        document.querySelector('#sketchpadContainer').style.backgroundImage = "url(" + futureBGImage.src +")";
+        document.querySelector('#sketchpadContainer').style.backgroundImage = "url('" + futureBGImage.src +"')";
         futureBGImage.outerHTML ="";
     } else{
         canvas.width = document.querySelector("#sketchpadContainer").offsetWidth; canvas.height = document.querySelector("#sketchpadContainer").offsetHeight;}
