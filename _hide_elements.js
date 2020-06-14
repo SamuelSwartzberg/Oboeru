@@ -9,7 +9,7 @@ document.querySelectorAll('.replaybutton').forEach((item, i) => {
 
 
 function isEmptyNodes(node) {
-    if (node.nodeName !== "DIV") { return false;
+    if (node.nodeName !== "DIV" || node.classList.contains('nohide')) { return false;
     } else if (!node.textContent.match(/^\s*$/)){
     } else if (node.children.length === 0){ return true;
     } else {
@@ -91,13 +91,13 @@ document.querySelectorAll(boxSelectorString+", .ipa").forEach((item, i) => {
 massNotDisplay([".frontSide:not(#color-picker)", ".bodySection", ".questionedElements", ".questionedContentSection", ".extraInfoSection", ".extraInfoSection > div", ".headerSection", "#answer", ".inputSection"]);
 window.scroll(0,100000);
 
-document.querySelectorAll(".questionedElements > div > div > div").forEach(function(item, i){
-    if(item.innerHTML.includes("：")){
+document.querySelectorAll(".questionedElements > div > div > div").forEach(function(item, i) {
+    if(item.innerHTML.includes("：")) {
         item.parentNode.style.textAlign="left";
         stringBeforeColon = item.innerHTML.slice(0, item.innerHTML.indexOf("："));
         stringAfterColon = item.innerHTML.slice(item.innerHTML.indexOf("：")+1);
         item.innerHTML = "<b>" + stringBeforeColon + "</b>：" + stringAfterColon;
-     }})
+     } })
 
  if(!isFront()){
      var cardCounter = Number(loadFromFront("card-counter", false, true)) || 0;

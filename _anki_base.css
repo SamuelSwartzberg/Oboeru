@@ -13,7 +13,7 @@ since #qa is broken on android, we need to refer to it with .question or .answer
 
 /* Reset user agent or anki style rules*/
 
-hr, div:empty, br, #_flag, #_mark, #MathJax-Element-4~br{ display: none;}
+hr, div:empty:not(.nohide), br, #_flag, #_mark, #MathJax-Element-4~br{ display: none;}
 
 svg{display: block !important;}
 
@@ -24,7 +24,7 @@ mark{color: unset; background-color: unset;}
 blockquote, q { quotes: none; } blockquote::before, blockquote::after, q::before, q::after { content: ''; content: none; }
 
 /*Reset Anki-specific behaviors*/
-body{overflow-wrap: break-word;}
+body{overflow-wrap: break-word; overflow-anchor: none;}
 img{ max-width: 100% !important; max-height: 100% !important;}
 .typeGood, .typeBad, .typeMissed{background-color: transparent;}
 .card, body.nightMode.card {background-color: white;}
