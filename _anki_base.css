@@ -267,7 +267,7 @@ body > #qa > div, #content > .question > div, #content > .answer > div {margin-t
 pre{overflow: hidden; margin: var(--tiny-distance) 0; position: relative;} pre code{ box-sizing: border-box; width: 10000px; max-width: 100%;font-size: var(--font-size-retrievable); --font-size-retrievable: var(--medium-distance); padding: var(--smallish-distance) var(--large-distance) var(--smallish-distance) var(--medium-distance); margin: 0; display: block; border: none; word-break: break-all; line-height: 1em; text-align: left; tab-size: 2; }
 pre code::after{content:attr(data-codetype); text-transform: uppercase; position: absolute; top: var(--tiny-distance); right: var(--small-distance);}
 pre code.css::after{color: #008FB3;}pre code.html::after{color: #E44D26;} pre code.js::after{color: #CC9600;} pre code.sh::after, pre code.bash::after{color: #EB0000;} pre code.cs::after{color: #9742FF;}
-pre code.java::after{color: #017DBC;} pre code.md::after{color: #E4016F;}
+pre code.java::after{color: #017DBC;} pre code.md::after{color: #E4016F;} pre code.py::after{color: #3779AE;}
 pre code mark{background-color: var(--card-font-color); color: var(--card-inverse-font-color); border-radius: var(--tiny-distance); padding: 0.25em;}
 pre code span.optional-details {max-width: 8ch; overflow: hidden; text-overflow: ellipsis; display:inline-block; vertical-align: bottom; white-space: nowrap;}
 
